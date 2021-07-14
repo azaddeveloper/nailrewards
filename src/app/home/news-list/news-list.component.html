@@ -1,49 +1,52 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">News and Promotion</h1>
-        <a routerLink="/home/news/add" class="btns btn-1 btn-1b" data-step="2" data-intro="<b>Add News</b><hr> Create new News or Promotion graphics here. Once a new News item is created, customers will get an instant notification on their phone and it will display in their News section of the app.">
-            <i class="fas fa-plus fa-sm text-white-100"></i> Add news</a>
-    </div>
-    <!-- Content Row -->
-    <div class="row">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">News/Promotion</h1>
+    <a routerLink="/home/news/add" class="btns btn-1 btn-1b">
+      <i class="fas fa-plus fa-sm text-white-100"></i> Add news</a>
+  </div>
+  <!-- Content Row -->
+  <div class="row">
 
-        <div class="col-md-12">
-            <div class="card shadow mb-4">
-                <div class="card-body" data-step="1" data-intro="<b>News/Promotions</b><hr> Here you will see all of your active News or Promotions. Active news/promotions will display for customers in their News section.">
-                    <div class="row" *ngIf="isData else noRecord">
-                        <div *ngFor="let news of storeNewsData.store_news; let i = index" class="col-xs-12 col-md-3 col-lg-3 col-xl-3 mb-4">
-                            <!-- Basic Card Example -->
-                            <div class="card">
+    <div class="col-md-12">
+      <div class="card shadow mb-4">
+        <div class="card-body">
+          <div class="row" *ngIf="isData else noRecord">
+            <div *ngFor="let news of storeNewsData.store_news; let i = index"
+              class="col-xs-12 col-md-3 col-lg-3 col-xl-3 mb-4">
+              <!-- Basic Card Example -->
+              <div class="card">
 
-                                <div class="card_img">
-                                    <img src="{{storeNewsData.image_url}}{{news.news_image}}" alt="" class="img-fluid" class="news-img">
-                                    <div class="overlay">
-                                        <div class="text actions">
-                                            <a style="margin-right: 10px;" routerLink="/home/news/edit" [queryParams]="{id: news.id}" ngbTooltip="Edit"> <i class="fa fa-edit"></i>
-                                            </a>
-                                            <i class="fa fa-times-circle" style="margin-left: 10px; cursor: pointer;" (click)="openConfirmationDialog(i,news)" ngbTooltip="Delete">
+                <div class="card_img">
+                  <img src="{{storeNewsData.image_url}}{{news.news_image}}" alt="" class="img-fluid" class="news-img">
+                  <div class="overlay">
+                    <div class="text actions">
+                      <a style="margin-right: 10px;" routerLink="/home/news/edit" [queryParams]="{id: news.id}"
+                        ngbTooltip="Edit"> <i class="fa fa-edit"></i>
+                      </a>
+                      <i class="fa fa-times-circle" style="margin-left: 10px; cursor: pointer;" (click)="openConfirmationDialog(i,news)"
+                        ngbTooltip="Delete">
                       </i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
                     </div>
-                    <ng-template #noRecord class="row">
-                        <div class="col-md-12" style="text-align: center;">
-                            No record found
-                        </div>
-                    </ng-template>
-
+                  </div>
                 </div>
-            </div>
-        </div>
 
+              </div>
+            </div>
+
+          </div>
+          <ng-template #noRecord class="row">
+            <div class="col-md-12" style="text-align: center;">
+              No record found
+            </div>
+          </ng-template>
+
+        </div>
+      </div>
     </div>
+
+  </div>
 </div>
 <!-- /.container-fluid -->

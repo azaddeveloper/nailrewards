@@ -78,7 +78,6 @@ export class StoreHoursComponent implements OnInit, OnDestroy {
     let s1 = this.apiService.updateStoreHours(this.getBody()).subscribe(
       result => {
         const apiResponse: ApiResponse = result;
-        this.sharedService.loggedInUser=apiResponse.data;
         this.notifier.notify("success", apiResponse.message);
       },
       error => {
@@ -106,34 +105,33 @@ export class StoreHoursComponent implements OnInit, OnDestroy {
   setDataForUpdate() {
     if (this.operation_hours.length == 7) {
       this.storeHourForm.patchValue({
-        
-        mondayOpen: this.setTime(this.operation_hours[0].open_at),
-        mondayClose: this.setTime(this.operation_hours[0].closed_at),
-        mondayEnabled: this.operation_hours[0].closed == "1" ? false : true,
+        sundayOpen: this.setTime(this.operation_hours[0].open_at),
+        sundayClose: this.setTime(this.operation_hours[0].closed_at),
+        sundayEnabled: this.operation_hours[0].closed == "1" ? false : true,
 
-        tuesdayOpen: this.setTime(this.operation_hours[1].open_at),
-        tuesdayClose: this.setTime(this.operation_hours[1].closed_at),
-        tuesdayEnabled: this.operation_hours[1].closed == "1" ? false : true,
+        mondayOpen: this.setTime(this.operation_hours[1].open_at),
+        mondayClose: this.setTime(this.operation_hours[1].closed_at),
+        mondayEnabled: this.operation_hours[1].closed == "1" ? false : true,
 
-        wednesdayOpen: this.setTime(this.operation_hours[2].open_at),
-        wednesdayClose: this.setTime(this.operation_hours[2].closed_at),
-        wednesdayEnabled: this.operation_hours[2].closed == "1" ? false : true,
+        tuesdayOpen: this.setTime(this.operation_hours[2].open_at),
+        tuesdayClose: this.setTime(this.operation_hours[2].closed_at),
+        tuesdayEnabled: this.operation_hours[2].closed == "1" ? false : true,
 
-        thursdayOpen: this.setTime(this.operation_hours[3].open_at),
-        thursdayClose: this.setTime(this.operation_hours[3].closed_at),
-        thursdayEnabled: this.operation_hours[3].closed == "1" ? false : true,
+        wednesdayOpen: this.setTime(this.operation_hours[3].open_at),
+        wednesdayClose: this.setTime(this.operation_hours[3].closed_at),
+        wednesdayEnabled: this.operation_hours[3].closed == "1" ? false : true,
 
-        fridayOpen: this.setTime(this.operation_hours[4].open_at),
-        fridayClose: this.setTime(this.operation_hours[4].closed_at),
-        fridayEnabled: this.operation_hours[4].closed == "1" ? false : true,
+        thursdayOpen: this.setTime(this.operation_hours[4].open_at),
+        thursdayClose: this.setTime(this.operation_hours[4].closed_at),
+        thursdayEnabled: this.operation_hours[4].closed == "1" ? false : true,
 
-        saturdayOpen: this.setTime(this.operation_hours[5].open_at),
-        saturdayClose: this.setTime(this.operation_hours[5].closed_at),
-        saturdayEnabled: this.operation_hours[5].closed == "1" ? false : true,
+        fridayOpen: this.setTime(this.operation_hours[5].open_at),
+        fridayClose: this.setTime(this.operation_hours[5].closed_at),
+        fridayEnabled: this.operation_hours[5].closed == "1" ? false : true,
 
-        sundayOpen: this.setTime(this.operation_hours[6].open_at),
-        sundayClose: this.setTime(this.operation_hours[6].closed_at),
-        sundayEnabled: this.operation_hours[6].closed == "1" ? false : true,
+        saturdayOpen: this.setTime(this.operation_hours[6].open_at),
+        saturdayClose: this.setTime(this.operation_hours[6].closed_at),
+        saturdayEnabled: this.operation_hours[6].closed == "1" ? false : true,
       });
     }
   }
@@ -144,31 +142,31 @@ export class StoreHoursComponent implements OnInit, OnDestroy {
     const body = {}
     body["days"] = ["1", "2", "3", "4", "5", "6", "7"];
     body["open_at"] = [
+      this.getTimeString(this.f.sundayOpen.value),
       this.getTimeString(this.f.mondayOpen.value),
       this.getTimeString(this.f.tuesdayOpen.value),
       this.getTimeString(this.f.wednesdayOpen.value),
       this.getTimeString(this.f.thursdayOpen.value),
       this.getTimeString(this.f.fridayOpen.value),
       this.getTimeString(this.f.saturdayOpen.value),
-      this.getTimeString(this.f.sundayOpen.value),
     ];
     body["closed_at"] = [
+      this.getTimeString(this.f.sundayClose.value),
       this.getTimeString(this.f.mondayClose.value),
       this.getTimeString(this.f.tuesdayClose.value),
       this.getTimeString(this.f.wednesdayClose.value),
       this.getTimeString(this.f.thursdayClose.value),
       this.getTimeString(this.f.fridayClose.value),
       this.getTimeString(this.f.saturdayClose.value),
-      this.getTimeString(this.f.sundayClose.value),
     ];
     body["is_open"] = [
+      this.f.sundayEnabled.value.toString(),
       this.f.mondayEnabled.value.toString(),
       this.f.tuesdayEnabled.value.toString(),
       this.f.wednesdayEnabled.value.toString(),
       this.f.thursdayEnabled.value.toString(),
       this.f.fridayEnabled.value.toString(),
       this.f.saturdayEnabled.value.toString(),
-      this.f.sundayEnabled.value.toString(),
     ];
     return body;
   }

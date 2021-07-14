@@ -7,9 +7,7 @@
             <i class="fas fa-laugh-wink"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Store Admin <sup></sup></div>
-        
     </a>
-    <div style="color: white;" class="sidebar-brand-text mx-3">Store Code: {{sharedService.loggedInUser.storeDetails.store_code}} <sup></sup></div>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -63,24 +61,6 @@
         <a class="nav-link" routerLink="/home/news">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>News</span></a>
-    </li>
-
-    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{match:['/home/automation','/home/automation']}">
-        <a class="nav-link" routerLink="/home/automation/" >
-            <i class="fas fa-fw fa-tasks"></i>
-            <span>Automated notifications</span></a>
-    </li>
-    
-    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{match:['/home/ratings','/home/ratings']}">
-        <a class="nav-link" routerLink="/home/ratings/" >
-            <i class="fas fa-fw fa-signal fa-rotate-45"></i>
-            <span>Store rating</span></a>
-    </li>
-
-    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{match:['/home/pin','/home/pin']}">
-        <a class="nav-link" routerLink="/home/pin/" >
-            <i class="fas fa-fw fa-eye"></i>
-            <span>PIN</span></a>
     </li>
 
     <!-- Nav Item - Charts -->

@@ -1,183 +1,204 @@
-<div class="card shadow mb-4" data-step="1" data-intro="<strong>Store Information</strong> <hr> Update this section so that your customers will be able to locate your store within the app and to call for appointments" data-position='top'>
-    <div class="card-header" id="headingOne">
-        <h5 class="mb-0">
-            <button class="btn btn-link m-0 font-weight-bold text-primary card-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+<div class="card shadow mb-4">
+  <div class="card-header" id="headingOne">
+    <h5 class="mb-0">
+      <button class="btn btn-link m-0 font-weight-bold text-primary card-header" data-toggle="collapse"
+        data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         <i class="fa fa-info-circle fa-color-heading"></i>
         Store Information
       </button>
-        </h5>
-    </div>
+    </h5>
+  </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-        <div class="card-body">
+  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+    <div class="card-body">
 
-            <div class="row" id="main">
-                <div class="col-md-12 col-lg-6 col-xs-12 rightPanel" id="leftPanel">
-                    <div class="row">
-
-
-                        <div class="col-md-12 col-xs-12">
-                            <form [formGroup]="storeInfoForm" (ngSubmit)="onSubmit()">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="store_name">Store Name<span class="asterisk">*</span></label>
-                                            <input type="text" formControlName="store_name" id="store_name" class="form-control input-lg" placeholder="Store Name">
-                                            <div *ngIf="submitted && f.store_name.errors" class="validation-feedback">
-                                                <div *ngIf="f.store_name.errors.required">Store name is required.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="store_owner">Owner Name<span class="asterisk">*</span></label>
-                                            <input type="text" formControlName="store_owner" id="store_owner" class="form-control input-lg" placeholder="Owner Name">
-                                            <div *ngIf="submitted && f.store_owner.errors" class="validation-feedback">
-                                                <div *ngIf="f.store_owner.errors.required">Owner name is required.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="email">Owner Email Id<span class="asterisk">*</span></label>
-                                            <input type="email" formControlName="email" id="email" class="form-control input-lg" placeholder="Owner Email Id">
-                                            <div *ngIf="submitted && f.email.errors" class="validation-feedback">
-                                                <div *ngIf="f.email.errors.required">Owner email id is required.
-                                                </div>
-                                                <div *ngIf="f.email.errors.email">Owner email id must contain a valid email address.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="phone_number">Phone Number<span class="asterisk">*</span></label>
-                                            <input type="text" formControlName="phone_number" id="phone_number" class="form-control input-lg" placeholder="Phone Number">
-                                            <div *ngIf="submitted && f.phone_number.errors" class="validation-feedback">
-                                                <div *ngIf="f.phone_number.errors.required">Phone number is required.
-                                                </div>
-                                                <div *ngIf="f.phone_number.errors.pattern">
-                                                    Phone number contains number only
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="address">Address<span class="asterisk">*</span></label>
-                                            <textarea class="form-control input-lg" formControlName="address" id="address" rows="2"></textarea>
-                                            <div *ngIf="submitted && f.address.errors" class="validation-feedback">
-                                                <div *ngIf="f.address.errors.required">Address is required.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="city">City<span class="asterisk">*</span></label>
-                                            <input type="text" formControlName="city" id="city" class="form-control input-lg" placeholder="City">
-                                            <div *ngIf="submitted && f.city.errors" class="validation-feedback">
-                                                <div *ngIf="f.city.errors.required">City is required.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="state">State<span class="asterisk">*</span></label>
-                                            <input type="text" formControlName="state" id="state" class="form-control input-lg" placeholder="State">
-                                            <div *ngIf="submitted && f.state.errors" class="validation-feedback">
-                                                <div *ngIf="f.state.errors.required">State is required.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    
-                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="zip_code">Zipcode<span class="asterisk">*</span></label>
-                                            <input type="text" formControlName="zip_code" id="zip_code" class="form-control input-lg" placeholder="Pincode">
-                                            <div *ngIf="submitted && f.zip_code.errors" class="validation-feedback">
-                                                <div *ngIf="f.zip_code.errors.required">Zipcode is required.
-                                                </div>
-                                                <div *ngIf="f.zip_code.errors.maxlength">Maximum 8 characters allowed.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="latitude">Latitude<span class="asterisk">*</span></label>
-                                            <input readonly value="{{lat}}" formControlName="latitude" id="latitude" class="form-control input-lg" placeholder="Latitude">
-                                            <div *ngIf="submitted && f.latitude.errors" class="validation-feedback">
-                                                <div *ngIf="f.latitude.errors.required">Latitude is required.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label for="longitude">Longitude<span class="asterisk">*</span></label>
-                                            <input readonly value="{{lng}}" formControlName="longitude" id="longitude" class="form-control input-lg" placeholder="Longitude">
-                                            <div *ngIf="submitted && f.longitude.errors" class="validation-feedback">
-                                                <div *ngIf="f.longitude.errors.required">Longitude is required.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+      <div class="row" id="main">
+        <div class="col-md-12 col-lg-6 col-xs-12 rightPanel" id="leftPanel">
+          <div class="row">
 
 
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3"><button class="btns  btn-1 btn-1b">Save</button>
-                                    </div>
-                                    <div class="col-xs-12 col-md-9"></div>
-                                </div>
-
-
-                            </form>
+            <div class="col-md-12 col-xs-12">
+              <form [formGroup]="storeInfoForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label for="store_name">Store Name</label>
+                      <input type="text" formControlName="store_name" id="store_name" class="form-control input-lg"
+                        placeholder="Store Name">
+                      <div *ngIf="submitted && f.store_name.errors" class="validation-feedback">
+                        <div *ngIf="f.store_name.errors.required">Store name is required.
                         </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label for="store_owner">Owner Name</label>
+                      <input type="text" formControlName="store_owner" id="store_owner" class="form-control input-lg"
+                        placeholder="Owner Name">
+                      <div *ngIf="submitted && f.store_owner.errors" class="validation-feedback">
+                        <div *ngIf="f.store_owner.errors.required">Owner name is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label for="email">Owner Email Id</label>
+                      <input type="email" formControlName="email" id="email" class="form-control input-lg"
+                        placeholder="Owner Email Id">
+                      <div *ngIf="submitted && f.email.errors" class="validation-feedback">
+                        <div *ngIf="f.email.errors.required">Owner email id is required.
+                        </div>
+                        <div *ngIf="f.email.errors.email">Owner email id must contain a valid email address.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label for="phone_number">Phone Number</label>
+                      <input type="text" formControlName="phone_number" id="phone_number" class="form-control input-lg"
+                        placeholder="Phone Number">
+                      <div *ngIf="submitted && f.phone_number.errors" class="validation-feedback">
+                        <div *ngIf="f.phone_number.errors.required">Phone number is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                      <label for="city">address</label>
+                      <textarea class="form-control input-lg" formControlName="address" id="address"
+                        rows="2"></textarea>
+                      <div *ngIf="submitted && f.address.errors" class="validation-feedback">
+                        <div *ngIf="f.address.errors.required">Address is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label for="city">City</label>
+                      <input type="text" formControlName="city" id="city" class="form-control input-lg"
+                        placeholder="City">
+                      <div *ngIf="submitted && f.city.errors" class="validation-feedback">
+                        <div *ngIf="f.city.errors.required">City is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label for="state">State</label>
+                      <input type="text" formControlName="state" id="state" class="form-control input-lg"
+                        placeholder="State">
+                      <div *ngIf="submitted && f.state.errors" class="validation-feedback">
+                        <div *ngIf="f.state.errors.required">State is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label for="land_mark">Landmark</label>
+                      <input type="text" formControlName="land_mark" id="land_mark" class="form-control input-lg"
+                        placeholder="Landmark">
+                      <div *ngIf="submitted && f.land_mark.errors" class="validation-feedback">
+                        <div *ngIf="f.land_mark.errors.required">Landmark is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label for="zip_code">Pincode</label>
+                      <input type="text" formControlName="zip_code" id="zip_code" class="form-control input-lg"
+                        placeholder="Pincode">
+                      <div *ngIf="submitted && f.zip_code.errors" class="validation-feedback">
+                        <div *ngIf="f.zip_code.errors.required">Pincode is required.
+                        </div>
+                        <div *ngIf="f.zip_code.errors.maxlength">Maximum 8 characters allowed.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label for="latitude">Latitude</label>
+                      <input readonly value="{{lat}}" formControlName="latitude" id="latitude"
+                        class="form-control input-lg" placeholder="Latitude">
+                      <div *ngIf="submitted && f.latitude.errors" class="validation-feedback">
+                        <div *ngIf="f.latitude.errors.required">Latitude is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <label for="longitude">Longitude</label>
+                      <input readonly value="{{lng}}" formControlName="longitude" id="longitude"
+                        class="form-control input-lg" placeholder="Longitude">
+                      <div *ngIf="submitted && f.longitude.errors" class="validation-feedback">
+                        <div *ngIf="f.longitude.errors.required">Longitude is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <!-- <div class="col-md-12 col-lg-6 col-xs-12 rightPanel" id="leftPanel">
-                    <agm-map (mapReady)="mapReady($event)" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [usePanning]="true" [zoomControl]="true" (mapClick)="mapClicked($event)">
 
-                        <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
-
-                            <agm-info-window [isOpen]="true">
-                                <div class="store-name-title">{{storeDetails.store_name}}</div>
-                                <div class="address">
-                                    <div>{{storeDetails.address}}</div>
-                                    <div>{{storeDetails.city}} {{storeDetails.state}} {{storeDetails.zip_code}}</div>
-                                    <div> {{storeDetails.land_mark}} </div>
-                                </div>
-
-                            </agm-info-window>
-
-                        </agm-marker>
-                    </agm-map>
-                    <p id="demo"></p>
-                    <button class="btns  btn-1 btn-1b col-md-12 col-lg-12 col-xl-6" (click)=changeLoation()> <i class="fa fa-crosshairs"></i> Get
-            current location</button>
-
-                </div> -->
+                <div class="row">
+                  <div class="col-xs-12 col-md-4 col-lg-4"><button class="btns  btn-1 btn-1b">Save</button>
+                  </div>
+                  <div class="col-xs-12 col-md-9"></div>
+                </div>
 
 
+              </form>
             </div>
+          </div>
         </div>
+
+        <div class="col-md-12 col-lg-6 col-xs-12 rightPanel" id="leftPanel">
+          <agm-map (mapReady)="mapReady($event)" [latitude]="lat" [longitude]="lng" [zoom]="zoom"
+            [disableDefaultUI]="false" [usePanning]="true" [zoomControl]="false" (mapClick)="mapClicked($event)">
+
+            <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
+              [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable"
+              (dragEnd)="markerDragEnd(m, $event)">
+
+              <agm-info-window [isOpen]="true">
+                <div class="store-name-title">{{storeDetails.store_name}}</div>
+                <div class="address">
+                  <div>{{storeDetails.address}}</div>
+                  <div>{{storeDetails.city}} {{storeDetails.state}} {{storeDetails.zip_code}}</div>
+                  <div> {{storeDetails.land_mark}} </div>
+                </div>
+
+              </agm-info-window>
+
+            </agm-marker>
+          </agm-map>
+          <p id="demo"></p>
+          <button class="btns  btn-1 btn-1b col-md-6" (click)=changeLoation()> <i class="fa fa-crosshairs"></i> Get
+            current locaiton</button>
+
+        </div>
+
+
+      </div>
     </div>
+  </div>
 </div>

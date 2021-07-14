@@ -5,9 +5,7 @@ export class Dashboard{
     total_news:any;
     total_rewards:any;
     total_visitor:any;
-    total_transaction:any;
     visitor_chart_data:VisitorChart;
-    transaction_chart_data:TransactionChart;
 }
 
 class CustomersChart{
@@ -15,10 +13,6 @@ class CustomersChart{
     y:any;
 }
 class VisitorChart{
-    x:any;
-    y:any;
-}
-class TransactionChart{
     x:any;
     y:any;
 }

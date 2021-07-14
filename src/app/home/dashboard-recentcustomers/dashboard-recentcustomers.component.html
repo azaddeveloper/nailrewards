@@ -1,4 +1,6 @@
-<div class="row" data-step="7" data-intro="<b>Recent Customer List</b><hr> This list shows the 100 most recent registrations for your store." data-position="right">
+<div class="row" data-step="4"
+    data-intro="<b>Recent customers list</b><hr> This is showing the list of 100 custemers who recently signup for your store."
+    data-position='right'>
 
     <!-- Content Column -->
 
@@ -14,7 +16,10 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <table *ngIf="recent_customers && recent_customers.length > 0" class="table table-bordered dataTable" datatable id="dataTable1" width="100%" cellspacing="0" [dtOptions]="dtOptions" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <table *ngIf="recent_customers && recent_customers.length > 0"
+                                    class="table table-bordered dataTable" datatable id="dataTable1" width="100%"
+                                    cellspacing="0" [dtOptions]="dtOptions" role="grid"
+                                    aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                         <tr role="row">
                                             <th>Name</th>
@@ -26,9 +31,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let customer of recent_customers; let i = index" role="row" class="odd" [ngClass]="{'even': (i % 2) == 0}">
+                                        <tr *ngFor="let customer of recent_customers; let i = index" role="row"
+                                            class="odd" [ngClass]="{'even': (i % 2) == 0}">
                                             <td class="sorting_1">
-                                                <a routerLink="/home/customerDetails" [queryParams]="{customer_id: customer.customer_id}">
+                                                <a routerLink="/home/customerDetails"
+                                                    [queryParams]="{customer_id: customer.customer_id}">
                                                     {{customer.first_name}} {{customer.last_name}}
                                                 </a>
                                             </td>

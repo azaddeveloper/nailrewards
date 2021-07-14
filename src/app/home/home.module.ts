@@ -42,21 +42,12 @@ import { RewardSettingComponent } from './store-setting/reward-setting/reward-se
 import { AppSettingComponent } from './store-setting/app-setting/app-setting.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { SocialMediaLinksComponent } from './store-setting/social-media-links/social-media-links.component';
-import { AmountChartComponent } from './amount-chart/amount-chart.component';
-import { RedeemRewardDialogComponent } from './redeem-reward-dialog/redeem-reward-dialog.component';
-import { SendNotificationComponent } from './send-notification/send-notification.component';
-import { AutomationComponent } from './automation/automation.component';
-import { RatingComponent } from './rating/rating.component';
-import { PinComponent } from './pin/pin.component';
 
 const appRoutes: Routes = [
   {
     path: 'home', component: HomeComponent, canActivate: [LoggedInGuard], children: [
       {
         path: 'home', component: DashboardComponent
-      },
-      {
-        path: 'pin', component: PinComponent
       },
       {
         path: 'customerList',
@@ -99,14 +90,6 @@ const appRoutes: Routes = [
         component: EditRewardComponent,
       },
       {
-        path: 'automation',
-        component: AutomationComponent,
-      },
-      {
-        path: 'ratings',
-        component: RatingComponent,
-      },
-      {
         path: '**',
         component: DashboardComponent,
       },
@@ -115,9 +98,9 @@ const appRoutes: Routes = [
 ];
 
 export const MY_NATIVE_FORMATS = {
-  fullPickerInput: { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true },
+  fullPickerInput: { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false },
   datePickerInput: { year: 'numeric', month: 'numeric', day: 'numeric' },
-  timePickerInput: { hour: 'numeric', minute: 'numeric', hour12: true },
+  timePickerInput: { hour: 'numeric', minute: 'numeric', hour12: false },
   monthYearLabel: { year: 'numeric', month: 'short' },
   dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
   monthYearA11yLabel: { year: 'numeric', month: 'long' },
@@ -127,7 +110,7 @@ export const MY_MOMENT_FORMATS = {
   parseInput: 'l LT',
   fullPickerInput: 'YYYY-MM-DD HH:mm',
   datePickerInput: 'l',
-  timePickerInput: 'hh:mm a',
+  timePickerInput: 'LT',
   monthYearLabel: 'MMM YYYY',
   dateA11yLabel: 'LL',
   monthYearA11yLabel: 'MMMM YYYY',
@@ -166,12 +149,6 @@ export const MY_MOMENT_FORMATS = {
     AppSettingComponent,
     CustomerDetailsComponent,
     SocialMediaLinksComponent,
-    AmountChartComponent,
-    RedeemRewardDialogComponent,
-    SendNotificationComponent,
-    AutomationComponent,
-    RatingComponent,
-    PinComponent,
     
 
 
@@ -233,6 +210,6 @@ export const MY_MOMENT_FORMATS = {
     ConfirmationDialogService,
     { provide: OWL_DATE_TIME_FORMATS, useValue: MY_NATIVE_FORMATS },
   ],
-  entryComponents: [ConfirmDialogComponent,RedeemRewardDialogComponent,SendNotificationComponent],
+  entryComponents: [ConfirmDialogComponent],
 })
 export class HomeModule { }

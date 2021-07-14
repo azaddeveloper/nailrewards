@@ -13,6 +13,7 @@ import { SharedService } from 'src/app/shared.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  private readonly notifier: NotifierService;
   loginForm: FormGroup;
   subscription: any = [];
   submitted = false;
@@ -24,10 +25,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private readonly notifier:NotifierService,
+    notifierService: NotifierService,
     private sharedService: SharedService,
     ) {
-    
+    this.notifier = notifierService;
+
   }
 
   onSubmit() {
@@ -51,7 +53,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     let s1 = this.authService.login(this.email, this.password).subscribe(result => {
       const apiResponse: ApiResponse = result;
       if (apiResponse.status_code == 200) {
-       // this.notifier.notify("success", apiResponse.message);
+        this.notifier.notify("success", apiResponse.message);
         this.sharedService.loggedInUser = apiResponse.data;
         localStorage.setItem("AUTH_TOKEN", this.sharedService.loggedInUser.AUTH_TOKEN);
         this.authService.isLogged.next(true);

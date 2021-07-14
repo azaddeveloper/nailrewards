@@ -29,7 +29,7 @@ export class UserProfileComponent implements OnInit {
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
       dob: ['', [Validators.required]],
-      contact_number: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
+      contact_number: ['', [Validators.required]],
       email: ['', [Validators.required]],
       image: [null, []],
     });
@@ -40,8 +40,9 @@ export class UserProfileComponent implements OnInit {
       dob: new Date(this.userProfile.dob),
       contact_number: this.userProfile.contact_number.trim(),
       email: this.userProfile.email.trim(),
+
     });
-    this.userImage=this.userProfile.image;
+
   }
   get f() { return this.profileForm.controls; }
 

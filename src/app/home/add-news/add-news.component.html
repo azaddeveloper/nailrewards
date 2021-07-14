@@ -248,7 +248,7 @@
                     <form [formGroup]="newsForm" (ngSubmit)="onSubmit()">
                         <div class="row">
                             <div class="col-xl-12 col-md-12">
-                                <label for="newsTitle">News title<span class="asterisk">*</span></label>
+                                <label for="newsTitle">News title</label>
                                 <div class="form-group">
                                     <input formControlName="news_title" id="newsTitle" type="text"
                                         class="form-control" />
@@ -260,9 +260,9 @@
                                 </div>
                             </div>
                             <div class="col-xl-12 col-md-12">
-                                <label for="news_description">News description<span class="asterisk">*</span></label>
+                                <label for="newsTitle">News description</label>
                                 <div class="form-group">
-                                    <textarea formControlName="news_description" id="news_description"
+                                    <textarea formControlName="news_description" id="newsTitle"
                                         (keyup)="changeDrawing()" class="form-control" rows="2"></textarea>
                                     <div *ngIf="submitted && f.news_description.errors" class="validation-feedback">
                                         <div *ngIf="f.news_description.errors.required">News description is required
@@ -271,9 +271,9 @@
                                 </div>
                             </div>
                             <div class="col-xl-12 col-md-12">
-                                <label for="term_condition">Terms and condition</label>
+                                <label for="newsTitle">Terms & condition</label>
                                 <div class="form-group">
-                                    <textarea formControlName="term_condition" id="term_condition" (keyup)="changeDrawing()"
+                                    <textarea formControlName="term_condition" id="newsTitle" (keyup)="changeDrawing()"
                                         class="form-control" rows="2"></textarea>
                                     <div *ngIf="submitted && f.term_condition.errors" class="validation-feedback">
                                         <div *ngIf="f.term_condition.errors.required">News terms & condition is required
@@ -284,8 +284,8 @@
                             </div>
                             <div class="col-xl-12 col-md-12">
                                 <div class="row">
-                                    <!-- <div class="col-xl-6 col-md-6">
-                                        <label for="newsTitle">Start date time<span class="asterisk">*</span></label>
+                                    <div class="col-xl-6 col-md-6">
+                                        <label for="newsTitle">Start date time</label>
                                         <div class="form-group">
                                             <input class="form-control" formControlName="start_date_time"
                                                 [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12" [selectMode]="'single'"
@@ -297,14 +297,14 @@
                                                     required</div>
                                             </div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="col-xl-6 col-md-6">
-                                        <label for="newsTitle">End date time<span class="asterisk">*</span></label>
+                                        <label for="newsTitle">End date time</label>
                                         <div class="form-group">
                                             <input class="form-control" formControlName="end_date_time"
                                                 [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" [selectMode]="'single'"
-                                                [min]="min">
-                                            <owl-date-time hour12Timer="true" #dt13></owl-date-time>
+                                                [min]="f.start_date_time.value">
+                                            <owl-date-time #dt13></owl-date-time>
                                             <div *ngIf="submitted && f.end_date_time.errors"
                                                 class="validation-feedback">
                                                 <div *ngIf="f.end_date_time.errors.required">End date time is required
@@ -315,7 +315,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-12 col-md-12 mb-4">
-                                <label for="newsTitle">Enabled<span class="asterisk">*</span></label>
+                                <label for="newsTitle">Enabled</label>
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <label class="switch ">

@@ -31,7 +31,7 @@ export class NewsListComponent implements OnInit, OnDestroy {
 
       },
       error => {
-        this.apiService.handleError(error,false);
+        //this.apiService.handleError(error);
       })
     this.subscription.push(s1);
   }
@@ -52,7 +52,7 @@ export class NewsListComponent implements OnInit, OnDestroy {
     let s1 = this.apiService.deleteStoreNews(body).subscribe(
       result => {
         const apiResponse: ApiResponse = result;
-        // this.notifier.notify("success", apiResponse.message);
+        this.notifier.notify("success", apiResponse.message);
         this.getNewsData();
       },
       error => {

@@ -20,7 +20,6 @@ export class StoreDetails {
     store_owner: any;
     twitter_link: any;
     google_link: any;
-    schedule_appointment: any;
     zip_code: any;
     storeSettings: StoreSetting;
     app_menu:AppMenu;

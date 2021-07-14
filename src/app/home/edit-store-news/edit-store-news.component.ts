@@ -7,7 +7,6 @@ import { NotifierService } from 'angular-notifier';
 import { ApiResponse } from 'src/app/models/api-response.model';
 import { StoreNewsDetails } from 'src/app/models/store-news-details.model';
 import { environment } from 'src/environments/environment';
-import { NewsTemplates } from 'src/app/models/news-templates.model';
 
 @Component({
   selector: 'app-edit-store-news',
@@ -47,8 +46,6 @@ export class EditStoreNewsComponent implements AfterViewInit, OnInit, OnDestroy 
   subscription: any = [];
   submitted = false;
 
-  newsTemplates:NewsTemplates=new NewsTemplates();
-
   public min = new Date();
   selectedImageId: Number = 0;
   public storeNewsDetails: StoreNewsDetails = new StoreNewsDetails();
@@ -62,7 +59,6 @@ export class EditStoreNewsComponent implements AfterViewInit, OnInit, OnDestroy 
     private cdref: ChangeDetectorRef
 
   ) {
-    this.min.setDate(this.min.getDate() + 1); //add 1 day in current date for default
     this.images = [
       {
         id: 1,
@@ -88,25 +84,9 @@ export class EditStoreNewsComponent implements AfterViewInit, OnInit, OnDestroy 
 
     this.route.queryParams.subscribe(params => {
       this.newsId = params['id'];
-     });
-     this.getTemplateData();
+
+    });
   }
-
-  getTemplateData(){
-    // this.ifData=false;
-    let s1 = this.apiService.templateFilesForPanels().subscribe(
-      result => {
-        const apiResponse: ApiResponse = result;
-        this.newsTemplates=apiResponse.data;
-        this.images=this.newsTemplates.files;
-      },
-      error => {
-        // this.apiService.handleError(error);
-      })
-    this.subscription.push(s1);
-  }
-
-
   getDataForUpdate() {
     var body = {};
     body['id'] = this.newsId;
@@ -125,7 +105,7 @@ export class EditStoreNewsComponent implements AfterViewInit, OnInit, OnDestroy 
           }, 1000);
         } else {
           var imageObj = new Image();
-          imageObj.src = environment.base_url + "assets/templates/" + this.storeNewsDetails.background_image;
+          imageObj.src = environment.base_url + "assets/img/" + this.storeNewsDetails.background_image;
           imageObj.onload = function () {
             that.selectedImage = this as HTMLImageElement;
             that.changeDrawing();
@@ -146,11 +126,11 @@ export class EditStoreNewsComponent implements AfterViewInit, OnInit, OnDestroy 
       news_title: this.storeNewsDetails.news_title,
       news_description: this.storeNewsDetails.news_description,
       term_condition: this.storeNewsDetails.term_condition,
-      // start_date_time: new Date(this.storeNewsDetails.start_date_time),
+      start_date_time: new Date(this.storeNewsDetails.start_date_time),
       end_date_time: new Date(this.storeNewsDetails.end_date_time),
       enabled: this.storeNewsDetails.enabled == "1" ? true : false,
     });
-    this.min=new Date(this.storeNewsDetails.end_date_time);
+    this.min=new Date(this.storeNewsDetails.start_date_time);
   }
 
   selectTextIndex(index) {
@@ -301,7 +281,7 @@ export class EditStoreNewsComponent implements AfterViewInit, OnInit, OnDestroy 
   onSubmit() {
     this.submitted = true;
     if (this.newsForm.invalid) {
-      console.log(this.newsForm);
+      console.log(this.newsForm.controls.start_date_time);
       return;
     }
     var body = {};
@@ -312,14 +292,14 @@ export class EditStoreNewsComponent implements AfterViewInit, OnInit, OnDestroy 
     body['news_title'] = this.f.news_title.value;
     body['news_description'] = this.f.news_description.value;
     body['term_condition'] = this.f.term_condition.value;
-    // body['start_date_time'] = this.getDateString(this.f.start_date_time.value);
+    body['start_date_time'] = this.getDateString(this.f.start_date_time.value);
     body['end_date_time'] = this.getDateString(this.f.end_date_time.value);
     body['enabled'] = this.f.enabled.value;
 
     let s1 = this.apiService.updateStoreNews(body).subscribe(
       result => {
         const apiResponse: ApiResponse = result;
-        // this.notifier.notify("success", apiResponse.message);
+        this.notifier.notify("success", apiResponse.message);
         this.router.navigate(['home/news']);
       },
       error => {
@@ -376,8 +356,8 @@ export class EditStoreNewsComponent implements AfterViewInit, OnInit, OnDestroy 
     this.newsForm = this.formBuilder.group({
       news_title: ['', [Validators.required, Validators.maxLength(100)]],
       news_description: ['', [Validators.required]],
-      term_condition: [''],
-      // start_date_time: [this.min, [Validators.required]],
+      term_condition: ['', [Validators.required]],
+      start_date_time: [this.min, [Validators.required]],
       end_date_time: [this.min, [Validators.required]],
       enabled: [true],
     });

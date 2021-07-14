@@ -49,7 +49,7 @@ export class EditRewardComponent implements OnInit, OnDestroy {
       reward_title: ['', [Validators.required, Validators.maxLength(100)]],
       points_required: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       reward_description: ['', [Validators.required]],
-      term_condition: [''],
+      term_condition: ['', [Validators.required]],
       start_date_time: [this.min, [Validators.required]],
       end_date_time: [this.min, [Validators.required]],
       enabled: [true],
@@ -78,7 +78,7 @@ export class EditRewardComponent implements OnInit, OnDestroy {
 
       result => {
         const apiResponse: ApiResponse = result;
-        // this.notifier.notify("success", apiResponse.message);
+        this.notifier.notify("success", apiResponse.message);
         this.router.navigate(['home/rewards']);
       },
       error => {

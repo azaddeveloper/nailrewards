@@ -29,14 +29,12 @@ export class SocialMediaLinksComponent implements OnInit {
       facebook_link: ["", [Validators.pattern(urlRegex)]],
       instagram_link: ["", [Validators.pattern(urlRegex)]],
       google_link: ["", [Validators.pattern(urlRegex)]],
-      schedule_appointment: ["", [Validators.pattern(urlRegex)]],
     });
     this.socialLinkForm.patchValue({
       twitter_link: this.sharedService.loggedInUser.storeDetails.twitter_link,
       facebook_link: this.sharedService.loggedInUser.storeDetails.facebook_link,
       instagram_link: this.sharedService.loggedInUser.storeDetails.instagram_link,
       google_link: this.sharedService.loggedInUser.storeDetails.google_link,
-      schedule_appointment: this.sharedService.loggedInUser.storeDetails.schedule_appointment,
     });
   }
 

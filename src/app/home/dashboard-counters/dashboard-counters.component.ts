@@ -10,7 +10,6 @@ export class DashboardCountersComponent implements OnInit {
   @Input() total_news:any;
   @Input() total_rewards:any;
   @Input() total_visitor:any;
-  @Input() total_transaction:any;
   
   constructor() { }
 

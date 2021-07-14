@@ -1,245 +1,274 @@
-<div class="card shadow mb-4" data-step="2" data-intro="<strong>Operational Hours</strong> <hr>Keeping this section up to date will show your users the hours of operation within their app." data-position='top'>
-    <div class="card-header" id="headingTwo">
-        <h5 class="mb-0">
-
-            <button class="btn btn-link m-0 font-weight-bold text-primary card-header collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+<div class="card shadow mb-4">
+  <div class="card-header" id="headingTwo">
+    <h5 class="mb-0">
+      
+      <button class="btn btn-link m-0 font-weight-bold text-primary card-header collapsed" data-toggle="collapse"
+        data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
         <i class="fa fa-clock fa-color-heading"></i>
-        Operational Hours
+        Operational Hour's
       </button>
-        </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-        <div class="card-body">
-            <div class="row" id="main">
-                <div class="col-md-12 col-lg-12 col-xl-6 col-xs-12 rightPanel" id="rightPanel">
-                    <div class="row">
-                        <div class="col-md-12 col-xs-12 ">
-                            <form role="form" [formGroup]="storeHourForm" (ngSubmit)="onSubmit()">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-lg-10 col-xl-12 col-md-12 Oprational_tl">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Day</th>
-                                                        <th>From</th>
-                                                        <th>To</th>
-                                                        <th>Open / Close</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                    <tr>
-                                                        <td>Monday</td>
-                                                        <td>
-                                                            <input [disabled]="!f.mondayEnabled.value" class="form-control" type="text" formControlName="mondayOpen" id="mondayOpen" [owlDateTimeTrigger]="dt21" [owlDateTime]="dt21">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt21></owl-date-time>
-                                                            <div *ngIf="submitted && f.mondayOpen.errors" class="validation-feedback">
-                                                                <div *ngIf="f.mondayOpen.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input [disabled]="!f.mondayEnabled.value" class="form-control" type="text" formControlName="mondayClose" id="mondayClose" [owlDateTimeTrigger]="dt22" [owlDateTime]="dt22">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt22></owl-date-time>
-                                                            <div *ngIf="submitted && f.mondayClose.errors" class="validation-feedback">
-                                                                <div *ngIf="f.mondayClose.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label class="switch" ngbTooltip="{{f.mondayEnabled.value?'Close':'Open'}}" data-placement="right">
+    </h5>
+  </div>
+  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+    <div class="card-body">
+      <div class="row" id="main">
+        <div class="col-md-12 col-lg-6 col-xs-12 rightPanel" id="rightPanel">
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <form role="form" [formGroup]="storeHourForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12 Oprational_tl">
+                    <div class="table-responsive">
+                      <table class="table table-hover table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Day</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Open / Close</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                         
+                          <tr>
+                            <td>Monday</td>
+                            <td>
+                              <input [disabled]="!f.mondayEnabled.value" class="form-control" type="text"
+                                formControlName="mondayOpen" id="mondayOpen" [owlDateTimeTrigger]="dt21"
+                                [owlDateTime]="dt21">
+                              <owl-date-time [pickerType]="'timer'" #dt21></owl-date-time>
+                              <div *ngIf="submitted && f.mondayOpen.errors" class="validation-feedback">
+                                <div *ngIf="f.mondayOpen.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <input [disabled]="!f.mondayEnabled.value" class="form-control" type="text"
+                                formControlName="mondayClose" id="mondayClose" [owlDateTimeTrigger]="dt22"
+                                [owlDateTime]="dt22">
+                              <owl-date-time [pickerType]="'timer'" #dt22></owl-date-time>
+                              <div *ngIf="submitted && f.mondayClose.errors" class="validation-feedback">
+                                <div *ngIf="f.mondayClose.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="checkbox">
+                                <label class="switch" ngbTooltip="{{f.mondayEnabled.value?'Close':'Open'}}" data-placement="right">
                                   <input type="checkbox" formControlName="mondayEnabled" class="default">
                                   <span class="slider round"></span>
                                 </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tuesday</td>
-                                                        <td>
-                                                            <input [disabled]="!f.tuesdayEnabled.value" class="form-control" type="text" formControlName="tuesdayOpen" id="tuesdayOpen" [owlDateTimeTrigger]="dt31" [owlDateTime]="dt31">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt31></owl-date-time>
-                                                            <div *ngIf="submitted && f.tuesdayOpen.errors" class="validation-feedback">
-                                                                <div *ngIf="f.tuesdayOpen.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input [disabled]="!f.tuesdayEnabled.value" class="form-control" type="text" formControlName="tuesdayClose" id="tuesdayClose" [owlDateTimeTrigger]="dt32" [owlDateTime]="dt32">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt32></owl-date-time>
-                                                            <div *ngIf="submitted && f.tuesdayClose.errors" class="validation-feedback">
-                                                                <div *ngIf="f.tuesdayClose.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label class="switch" ngbTooltip="{{f.tuesdayEnabled.value?'Close':'Open'}}" data-placement="right">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Tuesday</td>
+                            <td>
+                              <input [disabled]="!f.tuesdayEnabled.value" class="form-control" type="text"
+                                formControlName="tuesdayOpen" id="tuesdayOpen" [owlDateTimeTrigger]="dt31"
+                                [owlDateTime]="dt31">
+                              <owl-date-time [pickerType]="'timer'" #dt31></owl-date-time>
+                              <div *ngIf="submitted && f.tuesdayOpen.errors" class="validation-feedback">
+                                <div *ngIf="f.tuesdayOpen.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <input [disabled]="!f.tuesdayEnabled.value" class="form-control" type="text"
+                                formControlName="tuesdayClose" id="tuesdayClose" [owlDateTimeTrigger]="dt32"
+                                [owlDateTime]="dt32">
+                              <owl-date-time [pickerType]="'timer'" #dt32></owl-date-time>
+                              <div *ngIf="submitted && f.tuesdayClose.errors" class="validation-feedback">
+                                <div *ngIf="f.tuesdayClose.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="checkbox">
+                                <label class="switch" ngbTooltip="{{f.tuesdayEnabled.value?'Close':'Open'}}" data-placement="right">
                                   <input type="checkbox" formControlName="tuesdayEnabled" class="default">
                                   <span class="slider round"></span>
                                 </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Wednesday</td>
-                                                        <td>
-                                                            <input [disabled]="!f.wednesdayEnabled.value" class="form-control" type="text" formControlName="wednesdayOpen" id="wednesdayOpen" [owlDateTimeTrigger]="dt41" [owlDateTime]="dt41">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt41></owl-date-time>
-                                                            <div *ngIf="submitted && f.wednesdayOpen.errors" class="validation-feedback">
-                                                                <div *ngIf="f.wednesdayOpen.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input [disabled]="!f.wednesdayEnabled.value" class="form-control" type="text" formControlName="wednesdayClose" id="wednesdayClose" [owlDateTimeTrigger]="dt42" [owlDateTime]="dt42">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt42></owl-date-time>
-                                                            <div *ngIf="submitted && f.wednesdayClose.errors" class="validation-feedback">
-                                                                <div *ngIf="f.wednesdayClose.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label class="switch" ngbTooltip="{{f.wednesdayEnabled.value?'Close':'Open'}}" data-placement="right">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Wednesday</td>
+                            <td>
+                              <input [disabled]="!f.wednesdayEnabled.value" class="form-control" type="text"
+                                formControlName="wednesdayOpen" id="wednesdayOpen" [owlDateTimeTrigger]="dt41"
+                                [owlDateTime]="dt41">
+                              <owl-date-time [pickerType]="'timer'" #dt41></owl-date-time>
+                              <div *ngIf="submitted && f.wednesdayOpen.errors" class="validation-feedback">
+                                <div *ngIf="f.wednesdayOpen.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <input [disabled]="!f.wednesdayEnabled.value" class="form-control" type="text"
+                                formControlName="wednesdayClose" id="wednesdayClose" [owlDateTimeTrigger]="dt42"
+                                [owlDateTime]="dt42">
+                              <owl-date-time [pickerType]="'timer'" #dt42></owl-date-time>
+                              <div *ngIf="submitted && f.wednesdayClose.errors" class="validation-feedback">
+                                <div *ngIf="f.wednesdayClose.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="checkbox">
+                                <label class="switch" ngbTooltip="{{f.wednesdayEnabled.value?'Close':'Open'}}" data-placement="right">
                                   <input type="checkbox" formControlName="wednesdayEnabled" class="default">
                                   <span class="slider round"></span>
                                 </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Thursday</td>
-                                                        <td>
-                                                            <input [disabled]="!f.thursdayEnabled.value" class="form-control" type="text" formControlName="thursdayOpen" id="thursdayOpen" [owlDateTimeTrigger]="dt51" [owlDateTime]="dt51">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt51></owl-date-time>
-                                                            <div *ngIf="submitted && f.thursdayOpen.errors" class="validation-feedback">
-                                                                <div *ngIf="f.thursdayOpen.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input [disabled]="!f.thursdayEnabled.value" class="form-control" type="text" formControlName="thursdayClose" id="thursdayClose" [owlDateTimeTrigger]="dt52" [owlDateTime]="dt52">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt52></owl-date-time>
-                                                            <div *ngIf="submitted && f.thursdayClose.errors" class="validation-feedback">
-                                                                <div *ngIf="f.thursdayClose.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label class="switch" ngbTooltip="{{f.thursdayEnabled.value?'Close':'Open'}}" data-placement="right">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Thursday</td>
+                            <td>
+                              <input [disabled]="!f.thursdayEnabled.value" class="form-control" type="text"
+                                formControlName="thursdayOpen" id="thursdayOpen" [owlDateTimeTrigger]="dt51"
+                                [owlDateTime]="dt51">
+                              <owl-date-time [pickerType]="'timer'" #dt51></owl-date-time>
+                              <div *ngIf="submitted && f.thursdayOpen.errors" class="validation-feedback">
+                                <div *ngIf="f.thursdayOpen.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <input [disabled]="!f.thursdayEnabled.value" class="form-control" type="text"
+                                formControlName="thursdayClose" id="thursdayClose" [owlDateTimeTrigger]="dt52"
+                                [owlDateTime]="dt52">
+                              <owl-date-time [pickerType]="'timer'" #dt52></owl-date-time>
+                              <div *ngIf="submitted && f.thursdayClose.errors" class="validation-feedback">
+                                <div *ngIf="f.thursdayClose.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="checkbox">
+                                <label class="switch" ngbTooltip="{{f.thursdayEnabled.value?'Close':'Open'}}" data-placement="right">
                                   <input type="checkbox" formControlName="thursdayEnabled" class="default">
                                   <span class="slider round"></span>
                                 </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Friday</td>
-                                                        <td>
-                                                            <input [disabled]="!f.fridayEnabled.value" class="form-control" type="text" formControlName="fridayOpen" id="fridayOpen" [owlDateTimeTrigger]="dt61" [owlDateTime]="dt61">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt61></owl-date-time>
-                                                            <div *ngIf="submitted && f.fridayOpen.errors" class="validation-feedback">
-                                                                <div *ngIf="f.fridayOpen.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input [disabled]="!f.fridayEnabled.value" class="form-control" type="text" formControlName="fridayClose" id="fridayClose" [owlDateTimeTrigger]="dt62" [owlDateTime]="dt62">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt62></owl-date-time>
-                                                            <div *ngIf="submitted && f.fridayClose.errors" class="validation-feedback">
-                                                                <div *ngIf="f.fridayClose.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label class="switch" ngbTooltip="{{f.fridayEnabled.value?'Close':'Open'}}" data-placement="right">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Friday</td>
+                            <td>
+                              <input [disabled]="!f.fridayEnabled.value" class="form-control" type="text"
+                                formControlName="fridayOpen" id="fridayOpen" [owlDateTimeTrigger]="dt61"
+                                [owlDateTime]="dt61">
+                              <owl-date-time [pickerType]="'timer'" #dt61></owl-date-time>
+                              <div *ngIf="submitted && f.fridayOpen.errors" class="validation-feedback">
+                                <div *ngIf="f.fridayOpen.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <input [disabled]="!f.fridayEnabled.value" class="form-control" type="text"
+                                formControlName="fridayClose" id="fridayClose" [owlDateTimeTrigger]="dt62"
+                                [owlDateTime]="dt62">
+                              <owl-date-time [pickerType]="'timer'" #dt62></owl-date-time>
+                              <div *ngIf="submitted && f.fridayClose.errors" class="validation-feedback">
+                                <div *ngIf="f.fridayClose.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="checkbox">
+                                <label class="switch" ngbTooltip="{{f.fridayEnabled.value?'Close':'Open'}}" data-placement="right">
                                   <input type="checkbox" formControlName="fridayEnabled" class="default">
                                   <span class="slider round"></span>
                                 </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Saturday</td>
-                                                        <td>
-                                                            <input [disabled]="!f.saturdayEnabled.value" class="form-control" type="text" formControlName="saturdayOpen" id="saturdayOpen" [owlDateTimeTrigger]="dt71" [owlDateTime]="dt71">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt71></owl-date-time>
-                                                            <div *ngIf="submitted && f.saturdayOpen.errors" class="validation-feedback">
-                                                                <div *ngIf="f.saturdayOpen.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input [disabled]="!f.saturdayEnabled.value" class="form-control" type="text" formControlName="saturdayClose" id="saturdayClose" [owlDateTimeTrigger]="dt72" [owlDateTime]="dt72">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt72></owl-date-time>
-                                                            <div *ngIf="submitted && f.saturdayClose.errors" class="validation-feedback">
-                                                                <div *ngIf="f.saturdayClose.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label class="switch" ngbTooltip="{{f.saturdayEnabled.value?'Close':'Open'}}" data-placement="right">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Saturday</td>
+                            <td>
+                              <input [disabled]="!f.saturdayEnabled.value" class="form-control" type="text"
+                                formControlName="saturdayOpen" id="saturdayOpen" [owlDateTimeTrigger]="dt71"
+                                [owlDateTime]="dt71">
+                              <owl-date-time [pickerType]="'timer'" #dt71></owl-date-time>
+                              <div *ngIf="submitted && f.saturdayOpen.errors" class="validation-feedback">
+                                <div *ngIf="f.saturdayOpen.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <input [disabled]="!f.saturdayEnabled.value" class="form-control" type="text"
+                                formControlName="saturdayClose" id="saturdayClose" [owlDateTimeTrigger]="dt72"
+                                [owlDateTime]="dt72">
+                              <owl-date-time [pickerType]="'timer'" #dt72></owl-date-time>
+                              <div *ngIf="submitted && f.saturdayClose.errors" class="validation-feedback">
+                                <div *ngIf="f.saturdayClose.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="checkbox">
+                                <label class="switch" ngbTooltip="{{f.saturdayEnabled.value?'Close':'Open'}}" data-placement="right">
                                   <input type="checkbox" formControlName="saturdayEnabled" class="default">
                                   <span class="slider round"></span>
                                 </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Sunday</td>
-                                                        <td>
-                                                            <input [disabled]="!f.sundayEnabled.value" class="form-control" type="text" formControlName="sundayOpen" id="sundayOpen" [owlDateTimeTrigger]="dt11" [owlDateTime]="dt11">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt11></owl-date-time>
-                                                            <div *ngIf="submitted && f.sundayOpen.errors" class="validation-feedback">
-                                                                <div *ngIf="f.sundayOpen.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input [disabled]="!f.sundayEnabled.value" class="form-control" type="text" formControlName="sundayClose" id="sundayClose" [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12">
-                                                            <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt12></owl-date-time>
-                                                            <div *ngIf="submitted && f.sundayClose.errors" class="validation-feedback">
-                                                                <div *ngIf="f.sundayClose.errors.required">Required
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="checkbox">
-                                                                <label class="switch" ngbTooltip="{{f.sundayEnabled.value?'Close':'Open'}}" data-placement="right">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Sunday</td>
+                            <td>
+                              <input [disabled]="!f.sundayEnabled.value" class="form-control" type="text"
+                                formControlName="sundayOpen" id="sundayOpen" [owlDateTimeTrigger]="dt11"
+                                [owlDateTime]="dt11">
+                              <owl-date-time [pickerType]="'timer'" #dt11></owl-date-time>
+                              <div *ngIf="submitted && f.sundayOpen.errors" class="validation-feedback">
+                                <div *ngIf="f.sundayOpen.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <input [disabled]="!f.sundayEnabled.value" class="form-control" type="text"
+                                formControlName="sundayClose" id="sundayClose" [owlDateTimeTrigger]="dt12"
+                                [owlDateTime]="dt12">
+                              <owl-date-time [pickerType]="'timer'" #dt12></owl-date-time>
+                              <div *ngIf="submitted && f.sundayClose.errors" class="validation-feedback">
+                                <div *ngIf="f.sundayClose.errors.required">Required
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="checkbox">
+                                <label class="switch" ngbTooltip="{{f.sundayEnabled.value?'Close':'Open'}}" data-placement="right">
                                   <input type="checkbox" formControlName="sundayEnabled" class="default">
                                   <span class="slider round"></span>
                                 </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                              </div>
+                            </td>
+                          </tr>
 
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-6 col-lg-3 col-xl-3"><button class="btns  btn-1 btn-1b">Save</button>
-                                    </div>
-                                    <div class="col-xs-12 col-md-9"></div>
-                                </div>
-
-
-                            </form>
-                        </div>
+                        </tbody>
+                      </table>
                     </div>
+                  </div>
+
 
                 </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-md-4 col-lg-4"><button class="btns  btn-1 btn-1b">Save</button>
+                  </div>
+                  <div class="col-xs-12 col-md-9"></div>
+                </div>
+
+
+              </form>
             </div>
+          </div>
+
         </div>
+      </div>
     </div>
+  </div>
 </div>

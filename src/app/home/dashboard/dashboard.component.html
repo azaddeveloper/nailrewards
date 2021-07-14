@@ -11,7 +11,7 @@
     
 
     <!-- Content Row -->
-    <app-dashboard-counters [total_customer]=dashboadData.total_customer [total_news]=dashboadData.total_news [total_rewards]=dashboadData.total_rewards [total_visitor]=dashboadData.total_visitor [total_transaction]=dashboadData.total_transaction></app-dashboard-counters>
+    <app-dashboard-counters [total_customer]=dashboadData.total_customer [total_news]=dashboadData.total_news [total_rewards]=dashboadData.total_rewards [total_visitor]=dashboadData.total_visitor></app-dashboard-counters>
 
 
 
@@ -21,12 +21,12 @@
       
       <!-- Area Chart -->
      
-      <div class="col-xl-6 col-lg-6" data-step="5" data-intro="<b>Customers Chart</b><hr> This shows the number of customer registrations per month" data-position='right'>
+      <div class="col-xl-6 col-lg-6" data-step="2" data-intro="<b>Customers Chart</b><hr> This is showing the chart for custemer signup at your store with respective months." data-position='right'>
         <app-chart-customer *ngIf="dashboadData.customers_chart_data !=undefined" chartTitle="Customers" [data]=dashboadData.customers_chart_data></app-chart-customer>
       </div>
 
-      <div class="col-xl-6 col-lg-6" data-step="6" data-intro="<b>Transaction Chart</b><hr> This shows the total of transaction amount per month" data-position='left'>
-        <app-amount-chart *ngIf="dashboadData.transaction_chart_data !=undefined" chartTitle="Transaction" [data]=dashboadData.transaction_chart_data></app-amount-chart>
+      <div class="col-xl-6 col-lg-6" data-step="3" data-intro="<b>Visitor Chart</b><hr> This is showing the chart custemer visit at your store with respective months." data-position='left'>
+        <app-chart-customer *ngIf="dashboadData.customers_chart_data !=undefined" chartTitle="Visitors" [data]=dashboadData.visitor_chart_data></app-chart-customer>
       </div>
 
     </div>

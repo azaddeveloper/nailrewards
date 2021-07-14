@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  version: "1.0.2",
   production: false,
-  base_url: "http://ec2-35-169-81-57.compute-1.amazonaws.com/nailadmin/",
+  //base_url:"http://10.10.3.26:8222/admin/",
+  base_url:"http://10.10.3.26:4200/",
   apiUrl:"https://nailrewards.com/webservice/index.php/api/V_1/",
   google_map_api_key:"AIzaSyBLey8ESni-1AM0QuerNuawFP51Lot8xXg",
   authorization:"Basic YWRtaW46MTIzNDU2",
@@ -14,13 +14,9 @@ export const environment = {
     login:"storeAuth/storeLogin",
     getStoreDetials:"storeAuth/getStoreDetials",
     getCustomerDetials:"storeAuth/getCustomerDetials",
-    addReward:"storeAuth/addPointTransaction",
-    forgetPasswordUsingEmailOTP:"storeAuth/forgetPasswordUsingEmailOTP",
-    verifyPasswordOTP:"storeAuth/verifyPasswordOTP",
-    resetPasswordUsingEmailOTP:"storeAuth/resetPasswordUsingEmailOTP",
+
     homePage:"store/homePage",
     isLoggedIn:"store/isLoggedIn",
-    storePinUpdate:"store/storepinUpdate",
     addStoreNews:"store/addStoreNews",
     updateStoreNews:"store/updateStoreNews",
     getStoreNews:"store/getStoreNews",
@@ -39,21 +35,11 @@ export const environment = {
     updateRewardSettings:"store/updateRewardSettings",
     updateAppearanceSettings:"store/updateAppearanceSettings",
     customerList:"store/customerList",
-    globleCustomerList:"store/globleCustomerList",
     customerDetail:"store/customerDetail",
     redeemReward:"store/redeemReward",
-    redeemstoreAuthReward:"storeAuth/redeemReward",
-
     customerTransaction:"store/customerTransaction",
     updateStoreInformation:"store/updateStoreInformation",
     updateSocialLinks:"store/updateSocialLinks",
-    sendNotification:"store/sendNotification",
-    templateFilesForPanels:"store/templateFilesForPanels",
-    autoNotificationList:"store/autoNotificationList",
-    deleteAutoNotificaiton:"store/deleteAutoNotificaiton",
-    autoNotification:"store/autoNotification",
-    storeAverageRating:"store/storeAverageRating",
-    getRecentRating:"store/getRecentRating",
     
   }
 };

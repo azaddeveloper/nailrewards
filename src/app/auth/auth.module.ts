@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotifierModule } from "angular-notifier";
 import { GuestGuard } from './guest.guard';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { GuestSalonComponent } from './guest-salon/guest-salon.component';
 
 
 
 const appRoutes: Routes = [
   {
-    path: 'forgotPassword',
+    path: 'forgetPassword',
     component: ForgetPasswordComponent,
     canActivate: [GuestGuard]
   },
@@ -22,33 +22,26 @@ const appRoutes: Routes = [
     component: LoginComponent,
     canActivate: [GuestGuard]
   },
-
   {
     path: 'resetPassword',
     component: ResetPasswordComponent,
     canActivate: [GuestGuard]
   },
-]; 
+
+];
 
 
 
 
 
 @NgModule({
-  declarations: [LoginComponent, ForgetPasswordComponent, ResetPasswordComponent,GuestSalonComponent],
+  declarations: [LoginComponent, ForgetPasswordComponent, ResetPasswordComponent, GuestSalonComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     NotifierModule.withConfig({
       theme: "material",
-      behaviour: {
-        autoHide: 25000,
-        onClick: false,
-        onMouseover: 'pauseAutoHide',
-        showDismissButton: true,
-        stacking: 4,
-      },
       position: {
         horizontal: {
           position: 'right',

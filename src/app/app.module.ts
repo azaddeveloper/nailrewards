@@ -10,7 +10,7 @@ import { GuestGuard } from './auth/guest.guard';
 import { LoggedInGuard } from './auth/logged-in.guard';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function app_init(appService: AppService) {
   return () => appService.initializeApp();
@@ -26,9 +26,8 @@ export function app_init(appService: AppService) {
     AuthModule,
     HttpClientModule,
     HomeModule,
-    BrowserAnimationsModule,
-    NgxSpinnerModule,
-
+    NgbModule,
+    BrowserAnimationsModule
     ],
   providers: [GuestGuard, LoggedInGuard, AppService,
     {

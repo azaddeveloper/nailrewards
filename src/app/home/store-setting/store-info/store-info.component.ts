@@ -51,14 +51,14 @@ export class StoreInfoComponent implements OnInit {
       store_name: ['', [Validators.required]],
       store_owner: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      phone_number: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
+      phone_number: ['', [Validators.required]],
       address: ['', [Validators.required]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      // land_mark: ['', [Validators.required]],
+      land_mark: ['', [Validators.required]],
       zip_code: ['', [Validators.required, Validators.maxLength(8)]],
-      // latitude: ['', [Validators.required]],
-      // longitude: ['', [Validators.required]],
+      latitude: ['', [Validators.required]],
+      longitude: ['', [Validators.required]],
     });
     this.setStoreInfo();
   }
@@ -71,10 +71,10 @@ export class StoreInfoComponent implements OnInit {
       address: this.storeDetails.address,
       city: this.storeDetails.city,
       state: this.storeDetails.state,
-      // land_mark: this.storeDetails.land_mark,
+      land_mark: this.storeDetails.land_mark,
       zip_code: this.storeDetails.zip_code,
-      // latitude: this.storeDetails.latitude == "" ? this.lat : this.storeDetails.latitude,
-      // longitude: this.storeDetails.longitude == "" ? this.lng : this.storeDetails.longitude,
+      latitude: this.storeDetails.latitude == "" ? this.lat : this.storeDetails.latitude,
+      longitude: this.storeDetails.longitude == "" ? this.lng : this.storeDetails.longitude,
     });
 
   }
@@ -88,7 +88,7 @@ export class StoreInfoComponent implements OnInit {
     var body = {};
 
     body = this.storeInfoForm.value;
-    // console.error(body);
+    console.error(body);
 
     let s1 = this.apiService.updateStoreInformation(body).subscribe(
       result => {

@@ -35,35 +35,6 @@ export class ApiService {
     });
     return this.headers;
   }
-  getLoggedUser(): Observable<any> {
-    return this.http.get(
-      environment.apiUrl + environment.apiEndPoints.isLoggedIn,
-      { headers: this.getHeader() }
-    ); 
-  }
-  // updatestorePIN(pin: number,storeId): Observable<any> {
-   
-
-  //   const headers = new HttpHeaders({
-  //     "Content-Type": environment.contentType,
-  //     Authorization: environment.authorization
-  //   });
-  //   return this.http.post(
-  //     environment.apiUrl + environment.apiEndPoints.storePinUpdate,
-  //     body,
-  //     { headers: headers }
-  //   );
-  // }
-  updatestorePIN(pin: number,storeId): Observable<any> {
-    var body = {};
-    body["pin"] = pin;
-    body["storeId"] = storeId;
-    return this.http.post(environment.apiUrl + environment.apiEndPoints.storePinUpdate,
-      body,
-      { headers: this.getHeader() }
-
-    );
-  }
 
   homePage(): Observable<any> {
     return this.http.get(environment.apiUrl + environment.apiEndPoints.homePage, { headers: this.getHeader() });
@@ -132,13 +103,6 @@ export class ApiService {
 
     );
   }
-  
-  autoNotification(body): Observable<any> {
-    return this.http.post(environment.apiUrl + environment.apiEndPoints.autoNotification,
-      body,
-      { headers: this.getHeader() }
-    );
-  }
   updateStoreRewards(body): Observable<any> {
     return this.http.post(environment.apiUrl + environment.apiEndPoints.updateStoreRewards,
       body,
@@ -192,12 +156,6 @@ export class ApiService {
       { headers: this.getHeader() }
     );
   }
-  globleCustomerList(body): Observable<any> {
-    return this.http.post(environment.apiUrl + environment.apiEndPoints.globleCustomerList,
-      body,
-      { headers: this.getHeader() }
-    );
-  }
   customerDetail(body): Observable<any> {
     return this.http.post(environment.apiUrl + environment.apiEndPoints.customerDetail,
       body,
@@ -229,47 +187,7 @@ export class ApiService {
     );
   }
 
-  sendNotification(body): Observable<any> {
-    return this.http.post(environment.apiUrl + environment.apiEndPoints.sendNotification,
-      body,
-      { headers: this.getHeader() }
-    );
-  }
-  
-  deleteAutoNotificaiton(body): Observable<any> {
-    return this.http.post(environment.apiUrl + environment.apiEndPoints.deleteAutoNotificaiton,
-      body,
-      { headers: this.getHeader() }
-    );
-  }
 
-  templateFilesForPanels(): Observable<any> {
-    return this.http.get(
-      environment.apiUrl + environment.apiEndPoints.templateFilesForPanels,
-      { headers: this.getHeader() }
-    );
-  }
-  
-  autoNotificationList(): Observable<any> {
-    return this.http.get(
-      environment.apiUrl + environment.apiEndPoints.autoNotificationList,
-      { headers: this.getHeader() }
-    );
-  }
-  
-  storeAverageRating(): Observable<any> {
-    return this.http.get(
-      environment.apiUrl + environment.apiEndPoints.storeAverageRating,
-      { headers: this.getHeader() }
-    ); 
-  }
-  
-  getRecentRating(body): Observable<any> {
-    return this.http.post(environment.apiUrl + environment.apiEndPoints.getRecentRating,
-      body,
-      { headers: this.getHeader() }
-    );
-  }
 
   testLocaiton(): Observable<any> {
     return this.http.get("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway&key=" + environment.google_map_api_key);
@@ -277,7 +195,7 @@ export class ApiService {
  
 
 
-  handleError(error,show=true) {
+  handleError(error) {
     console.log(error);
     switch (error.status) {
       case 401:
@@ -286,15 +204,13 @@ export class ApiService {
         this.router.navigate(['login']);
         break;
       case 500:
-        this.notifier.notify("error", "Something went wrong. Please try again after sometime.");
+        this.notifier.notify("error", "Something went wrong!");
         break;
       case 404:
-        if(show==true){
-          this.notifier.notify("error", error.error.message);
-        }
+        this.notifier.notify("error", error.error.message);
         break;
       default:
-        this.notifier.notify("error", "Something went wrong. Please try again after sometime.");
+        this.notifier.notify("error", "Something went wrong!");
         break;
     }
 

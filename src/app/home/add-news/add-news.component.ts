@@ -5,7 +5,6 @@ import { ApiService } from 'src/app/api.service';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { ApiResponse } from 'src/app/models/api-response.model';
-import { NewsTemplates } from 'src/app/models/news-templates.model';
 
 
 @Component({
@@ -46,7 +45,7 @@ export class AddNewsComponent implements AfterViewInit, OnInit, OnDestroy {
   newsForm: FormGroup;
   subscription: any = [];
   submitted = false;
-  newsTemplates:NewsTemplates=new NewsTemplates();
+
   public min = new Date();
   selectedImageId: Number = 0;
   constructor(
@@ -56,7 +55,6 @@ export class AddNewsComponent implements AfterViewInit, OnInit, OnDestroy {
     private readonly notifier: NotifierService,
     private cdref: ChangeDetectorRef
   ) {
-    this.min.setDate(this.min.getDate() + 1); //add 1 day in current date for default
     var that = this;
     setInterval(function () {
       that.refreshPreview();
@@ -89,21 +87,7 @@ export class AddNewsComponent implements AfterViewInit, OnInit, OnDestroy {
     text1.text = "Sample Text";
     this.texts.push(text1);
     this.selectTextIndex(0);
-    this.getTemplateData();
-  }
 
-  getTemplateData(){
-    // this.ifData=false;
-    let s1 = this.apiService.templateFilesForPanels().subscribe(
-      result => {
-        const apiResponse: ApiResponse = result;
-        this.newsTemplates=apiResponse.data;
-        this.images=this.newsTemplates.files;
-      },
-      error => {
-        // this.apiService.handleError(error);
-      })
-    this.subscription.push(s1);
   }
 
   public refreshPreview() {
@@ -124,12 +108,11 @@ export class AddNewsComponent implements AfterViewInit, OnInit, OnDestroy {
     this.newsForm = this.formBuilder.group({
       news_title: ['', [Validators.required, Validators.maxLength(100)]],
       news_description: ['', [Validators.required]],
-      term_condition: [''],
-     
+      term_condition: ['', [Validators.required]],
+      start_date_time: [this.min, [Validators.required]],
       end_date_time: [this.min, [Validators.required]],
       enabled: [true],
     });
-    // start_date_time: [this.min, [Validators.required]],
   }
   get f() { return this.newsForm.controls; }
   getDateString(d) {
@@ -147,14 +130,14 @@ export class AddNewsComponent implements AfterViewInit, OnInit, OnDestroy {
     body['news_title'] = this.f.news_title.value;
     body['news_description'] = this.f.news_description.value;
     body['term_condition'] = this.f.term_condition.value;
-    //body['start_date_time'] = this.getDateString(this.f.start_date_time.value); removed start date and set current date at server end
+    body['start_date_time'] = this.getDateString(this.f.start_date_time.value);
     body['end_date_time'] = this.getDateString(this.f.end_date_time.value);
     body['enabled'] = this.f.enabled.value;
     let s1 = this.apiService.addStoreNews(body).subscribe(
 
       result => {
         const apiResponse: ApiResponse = result;
-        // this.notifier.notify("success", apiResponse.message);
+        this.notifier.notify("success", apiResponse.message);
         this.router.navigate(['home/news']);
       },
       error => {

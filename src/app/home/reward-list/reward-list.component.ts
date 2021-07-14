@@ -12,7 +12,6 @@ import { ConfirmationDialogService } from '../confirm-dialog/confirmation-dialog
 })
 export class RewardListComponent implements OnInit, OnDestroy {
   dtOptions: any = {
-    order: [],
     dom: 'lrfBtip',
     buttons: [
       {
@@ -56,7 +55,7 @@ export class RewardListComponent implements OnInit, OnDestroy {
         this.tData = true;
       },
       error => {
-        this.apiService.handleError(error,false);
+        this.apiService.handleError(error);
       })
     this.subscription.push(s1);
   }
@@ -67,7 +66,7 @@ export class RewardListComponent implements OnInit, OnDestroy {
       result => {
         const apiResponse: ApiResponse = result;
         reward = apiResponse.data;
-        // this.notifier.notify("success", apiResponse.message);
+        this.notifier.notify("success", apiResponse.message);
       },
       error => {
         this.apiService.handleError(error);
@@ -89,7 +88,7 @@ export class RewardListComponent implements OnInit, OnDestroy {
     let s1 = this.apiService.deleteStoreReward(body).subscribe(
       result => {
         const apiResponse: ApiResponse = result;
-        // this.notifier.notify("success", apiResponse.message);
+        this.notifier.notify("success", apiResponse.message);
         this.storeReward.splice(index, 1);
         this.tData = true;
       },

@@ -53,8 +53,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   getSearchResult(e = "") {
     const body = {};
-    body["string"] = e;
-    let s1 = this.apiService.globleCustomerList(body).subscribe(
+    body["sort_by"] = "first_name";
+    body["number_of_records"] = "3";
+    body["offset"] = "0";
+    body["filter"] = JSON.stringify({ "email": e });
+    let s1 = this.apiService.customerList(body).subscribe(
       result => {
         const apiResponse: ApiResponse = result;
         this.data = apiResponse.data["customer_list"];

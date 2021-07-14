@@ -20,7 +20,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="reward_title">Reward name<span class="asterisk">*</span></label>
+                                            <label for="reward_title">Reward name</label>
                                             <input type="text" formControlName="reward_title" id="reward_title"
                                                 class="form-control input-lg" placeholder="Reward Name">
                                             <div *ngIf="submitted && f.reward_title.errors" class="validation-feedback">
@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="points_required">Required point<span class="asterisk">*</span></label>
+                                            <label for="points_required">Required point</label>
                                             <input type="text" formControlName="points_required" id="points_required"
                                                 class="form-control input-lg" placeholder="Required point">
                                             <div *ngIf="submitted && f.points_required.errors"
@@ -50,12 +50,12 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="start_date_time">Start date time<span class="asterisk">*</span></label>
+                                            <label for="start_date_time">Start date time</label>
                                             <input type="text" formControlName="start_date_time" id="start_date_time"
                                                 class="form-control input-lg" placeholder="Start Date"
                                                 [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12" [selectMode]="'single'"
                                                 [min]="min" (dateTimeChange)=changeDate($event)>
-                                            <owl-date-time hour12Timer="true" #dt12></owl-date-time>
+                                            <owl-date-time #dt12></owl-date-time>
                                             <div *ngIf="submitted && f.start_date_time.errors"
                                                 class="validation-feedback">
                                                 <div *ngIf="f.start_date_time.errors.required">Start date time is
@@ -67,12 +67,12 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="end_date_time">End date time<span class="asterisk">*</span></label>
+                                            <label for="end_date_time">End date time</label>
                                             <input type="text" formControlName="end_date_time" id="end_date_time"
                                                 [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" [selectMode]="'single'"
                                                 [min]="f.start_date_time.value" class="form-control input-lg"
                                                 placeholder="End Date">
-                                            <owl-date-time hour12Timer="true" #dt13></owl-date-time>
+                                            <owl-date-time #dt13></owl-date-time>
                                             <div *ngIf="submitted && f.end_date_time.errors"
                                                 class="validation-feedback">
                                                 <div *ngIf="f.end_date_time.errors.required">End date time is required
@@ -85,7 +85,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="reward_description">Description<span class="asterisk">*</span></label>
+                                            <label for="reward_description">Description</label>
                                             <textarea type="text" formControlName="reward_description"
                                                 id="reward_description" class="form-control input-lg"
                                                 placeholder="Description"></textarea>
@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="term_condition">Terms and condition</label>
+                                            <label for="term_condition">Term's and Condition</label>
                                             <textarea type="text" formControlName="term_condition" id="term_condition"
                                                 class="form-control input-lg"
                                                 placeholder="Term's and Condition"></textarea>
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-xs-12 col-sm-6 col-md-6">
-                                        <label style="margin-right: 35px;">Enabled<span class="asterisk">*</span></label>
+                                        <label style="margin-right: 35px;">Enabled</label>
                                         <div class="checkbox ">
                                             <label class="switch ">
                                                 <input type="checkbox" class="default" formControlName="enabled" value="true">

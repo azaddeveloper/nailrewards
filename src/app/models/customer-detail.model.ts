@@ -1,5 +1,3 @@
-import { StoreReward } from './store-reward.model';
-
 export class CustomerDetail{
     contact_number:any;
     created_at:any;
@@ -7,7 +5,6 @@ export class CustomerDetail{
     customer_rating:StoreRatingDetails;
     dob:any;
     earned_points:any;
-    active_rewards:Array<StoreReward>;
     email:any;
     first_name:any="";
     gender:any;
@@ -19,11 +16,6 @@ export class CustomerDetail{
     total_transaction_amount:any;
     total_visit:any;
     transaction_history:Array<TransactionHistory>;
-    customer_transaction_chart:ChartData
-}
-class ChartData{
-    x:any;
-    y:any;
 }
 export class TransactionHistory{
     amount:any;

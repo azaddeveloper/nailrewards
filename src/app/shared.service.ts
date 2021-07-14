@@ -6,7 +6,6 @@ import { StoreUser } from './models/store-user.model';
 })
 export class SharedService {
   public loggedInUser:StoreUser;
-  public forgetUserEmailId:String="";
   public selectedCustomer:any;
   constructor() { }
 }

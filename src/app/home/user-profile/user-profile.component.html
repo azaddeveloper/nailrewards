@@ -7,7 +7,8 @@
         <!-- <a href="#" data-toggle="modal" data-target="#changePasswordModal"
             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-cogs fa-sm text-white-50"></i> Change Password</a> -->
-        <a href="#" data-toggle="modal" data-target="#changePasswordModal" class="btns btns-link btn-1 btn-1b" data-step="3" data-intro="<strong>Change Password</strong> <hr> This button is used to change your password." data-position='left'>
+        <a href="#" data-toggle="modal" data-target="#changePasswordModal" class="btns btns-link btn-1 btn-1b"
+            data-step="3" data-intro="This is a tooltip!" data-position='right'>
             <i class="fas fa-cogs fa-sm text-white-100"></i> Change Password</a>
     </div>
 
@@ -27,15 +28,19 @@
                                         <div>
                                             <div class="user_profile_icon">
 
-                                                <img *ngIf="userImage==''; else profileImage" src="assets/img/no_image.png" alt="john" class="img-circle img-thumbnail">
+                                                <img *ngIf="userImage==''; else profileImage"
+                                                    src="assets/img/no_image.png" alt="john"
+                                                    class="img-circle img-thumbnail">
 
                                                 <ng-template #profileImage>
-                                                    <img src="{{userImage}}" alt="John" class="img-circle img-thumbnail">
+                                                    <img src="{{userImage}}" alt="John"
+                                                        class="img-circle img-thumbnail">
                                                 </ng-template>
 
 
                                             </div>
-                                            <div class="btn-group browse_pic" data-step="1" data-intro="<strong>Profile Image</strong> <hr> Upload a profile image for your store." data-position='right'>
+                                            <div class="btn-group browse_pic" data-step="1"
+                                                data-intro="This is a tooltip!" data-position='right'>
                                                 <input type="file" (change)="onFileChange($event)" class="btn btn-pic">
                                                 <i class="fas fa-fw fa-camera"></i>
                                             </div>
@@ -45,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-8 col-xs-12 rightPanel" id="rightPanel">
-                                <div class="row" data-step="2" data-intro="<strong>General Info</strong> <hr> Update your store’s general information." data-position='left'>
+                                <div class="row" data-step="2" data-intro="This is a tooltip!" data-position='right'>
                                     <div class="col-md-12 col-xs-12">
 
                                         <h6 class="m-0 font-weight-bold p-t-20 text-left text-primary">General Info</h6>
@@ -53,10 +58,13 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="first_name">First Name<span class="asterisk">*</span></label>
-                                                    <input formControlName="first_name" type="text" id="last_name" class="form-control input-lg" placeholder="First Name">
-                                                    <div *ngIf="submitted && f.first_name.errors" class="validation-feedback">
-                                                        <div *ngIf="f.first_name.errors.required">First name is required
+                                                    <label for="first_name">First Name</label>
+                                                    <input formControlName="first_name" type="text" id="last_name"
+                                                        class="form-control input-lg" placeholder="First Name">
+                                                    <div *ngIf="submitted && f.first_name.errors"
+                                                        class="validation-feedback">
+                                                        <div *ngIf="f.first_name.errors.required">First name is
+                                                            required
                                                         </div>
                                                     </div>
                                                 </div>
@@ -64,10 +72,13 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="last_name">Last Name<span class="asterisk">*</span></label>
-                                                    <input formControlName="last_name" type="text" id="last_name" class="form-control input-lg" placeholder="Last Name">
-                                                    <div *ngIf="submitted && f.last_name.errors" class="validation-feedback">
-                                                        <div *ngIf="f.last_name.errors.required">Last name is required
+                                                    <label for="last_name">Last Name</label>
+                                                    <input formControlName="last_name" type="text" id="last_name"
+                                                        class="form-control input-lg" placeholder="Last Name">
+                                                    <div *ngIf="submitted && f.last_name.errors"
+                                                        class="validation-feedback">
+                                                        <div *ngIf="f.last_name.errors.required">Last name is
+                                                            required
                                                         </div>
                                                     </div>
                                                 </div>
@@ -77,10 +88,13 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="dob">Date of birth<span class="asterisk">*</span></label>
-                                                    <input class="form-control input-lg" id="dob" formControlName="dob" [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" placeholder="Date of birth">
+                                                    <label for="dob">Your date of birth</label>
+                                                    <input class="form-control input-lg" id="dob" formControlName="dob"
+                                                        [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13"
+                                                        placeholder="Date of birth">
                                                     <div *ngIf="submitted && f.dob.errors" class="validation-feedback">
-                                                        <div *ngIf="f.dob.errors.required">Date of birth is required
+                                                        <div *ngIf="f.dob.errors.required">Date of birth is
+                                                            required
                                                         </div>
                                                     </div>
                                                     <owl-date-time #dt13 [pickerType]="'calendar'"></owl-date-time>
@@ -88,13 +102,14 @@
                                             </div>
                                             <div class="col-xs-12 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="contact_number">Contact no.<span class="asterisk">*</span></label>
-                                                    <input formControlName="contact_number" type="text" id="contact_number" class="form-control input-lg" placeholder="Contact no.">
-                                                    <div *ngIf="submitted && f.contact_number.errors" class="validation-feedback">
-                                                        <div *ngIf="f.contact_number.errors.required">Contact no. is required
-                                                        </div>
-                                                        <div *ngIf="f.contact_number.errors.pattern">
-                                                            Contact no. contains number only
+                                                    <label for="contact_number">Contact no.</label>
+                                                    <input formControlName="contact_number" type="text"
+                                                        id="contact_number" class="form-control input-lg"
+                                                        placeholder="Contact no.">
+                                                    <div *ngIf="submitted && f.contact_number.errors"
+                                                        class="validation-feedback">
+                                                        <div *ngIf="f.contact_number.errors.required">Contact no. is
+                                                            required
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,17 +118,21 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="email">Email<span class="asterisk">*</span></label>
-                                                    <input formControlName="email" type="text" id="email" class="form-control input-lg" placeholder="Email" readonly>
-                                                    <div *ngIf="submitted && f.email.errors" class="validation-feedback">
-                                                        <div *ngIf="f.email.errors.required">Email is required
+                                                    <label for="email">Email</label>
+                                                    <input formControlName="email" type="text" id="email"
+                                                        class="form-control input-lg" placeholder="Email" readonly>
+                                                    <div *ngIf="submitted && f.email.errors"
+                                                        class="validation-feedback">
+                                                        <div *ngIf="f.email.errors.required">Email is
+                                                            required
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-xs-12 col-md-6 col-lg-6"><button class="btns btn-1 btn-1b">Save</button></div>
+                                            <div class="col-xs-12 col-md-4 col-lg-4"><button
+                                                    class="btns btn-1 btn-1b">Save</button></div>
                                             <div class="col-xs-12 col-md-9"></div>
                                         </div>
                                     </div>

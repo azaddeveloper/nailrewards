@@ -2,12 +2,12 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Edit news / Promotion</h1>
+        <h1 class="h3 mb-0 text-gray-800">Add news/promotion</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
     <div class="row">
 
-        <div class="col-xl-6 col-lg-6 col-md-6 mb-4">
+        <div class="col-xl-6 col-md-8 mb-4">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -28,26 +28,30 @@
                                     <a class="nav-link" data-toggle="tab" href="#strockStyle">Strock Style</a>
                                 </li>
                                 <li class="nav-item">
-                                    <input type="button" (click)="addNewText()" value="Add New Text" class="btn btn-primary">
+                                    <input type="button" (click)="addNewText()" value="Add New Text"
+                                        class="btn btn-primary">
                                 </li>
                                 <li class="nav-item">
-                                    <input type="button" (click)="deleteText(selectedTextIndex)" value="Delete" class="btn btn-danger">
+                                    <input type="button" (click)="deleteText(selectedTextIndex)" value="Delete"
+                                        class="btn btn-danger">
                                 </li>
                             </ul>
 
                             <div class="tab-content">
-                                <div id="textStyle" class=" tab-pane active"><br>
+                                <div id="textStyle" class="container tab-pane active"><br>
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12">
                                             <label for="font-family">Text</label>
-                                            <input id="titleText" (keyup)="changeDrawing()" [(ngModel)]="text" type="text" class="form-control" maxlength="100">
+                                            <input id="titleText" (keyup)="changeDrawing()" [(ngModel)]="text"
+                                                type="text" class="form-control" maxlength="100">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-6 col-md-6">
+                                        <div class="col-xl-3 col-md-3">
                                             <label for="font-family">Font family</label>
                                             <div class="form-group">
-                                                <select [(ngModel)]="fontFamily" (change)="changeDrawing()" name="" id="font-family" class="form-control custom-select">
+                                                <select [(ngModel)]="fontFamily" (change)="changeDrawing()" name=""
+                                                    id="font-family" class="form-control custom-select">
                                                     <option style="font-family: Arial;" value="Arial">Arial</option>
                                                     <option style="font-family: Verdana;" value="Verdana">Verdana
                                                     </option>
@@ -89,11 +93,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-6 col-md-6">
+                                        <div class="col-xl-3 col-md-3">
                                             <div class="form-group">
                                                 <label for="font-size">Font-size</label>
                                                 <div class="form-group">
-                                                    <select class="form-control custom-select" (change)="changeDrawing()" [(ngModel)]="fontSize" name="" id="font-size">
+                                                    <select class="form-control custom-select"
+                                                        (change)="changeDrawing()" [(ngModel)]="fontSize" name=""
+                                                        id="font-size">
 
                                                         <option *ngFor="let num of getFontSize(50,501)" value="{{num}}">
                                                             {{num}} px
@@ -105,11 +111,13 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-6 col-md-6">
+                                        <div class="col-xl-2 col-md-2">
                                             <label for="Format">Format</label>
                                             <div class="form-group">
-                                                <i class="fa fa-bold formatIcons" (click)="doBold()" [ngClass]="{'active': bold}"></i>
-                                                <i class="fa fa-italic formatIcons" (click)="doItalic()" [ngClass]="{'active': italic}"></i>
+                                                <i class="fa fa-bold formatIcons" (click)="doBold()"
+                                                    [ngClass]="{'active': bold}"></i>
+                                                <i class="fa fa-italic formatIcons" (click)="doItalic()"
+                                                    [ngClass]="{'active': italic}"></i>
                                                 <!-- <input type="button" ngbTooltip="Bold" (click)="doBold()" value="Bold"
                                                     class="btn" [ngClass]="{'btn-primary': bold}" />
                                                 <input type="button" ngbTooltip="italic" (click)="doItalic()" value="Italic"
@@ -117,28 +125,35 @@
                                                     style="font-style: italic; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" /> -->
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-6 col-md-6">
+                                        <div class="col-xl-2 col-md-2">
                                             <label for="font-color">Font Color</label>
                                             <div class="form-group">
-                                                <input id="font-color" type="color" (change)="changeDrawing()" [(ngModel)]="textColor" class="form-control">
+                                                <input id="font-color" type="color" (change)="changeDrawing()"
+                                                    [(ngModel)]="textColor" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-6 col-md-6">
+                                        <div class="col-xl-3 col-md-3">
                                             <label for="margin-top">Margin Top</label>
                                             <div class="form-group">
-                                                <i class="fa fa-arrow-down formatIcons" (click)="marginTopIncrement()"></i>
-                                                <i class="fa fa-arrows-alt formatIcons" (click)="marginTopBalance()"></i>
-                                                <i class="fa fa-arrow-up formatIcons" (click)="marginTopDecrement()"></i>
+                                                <i class="fa fa-arrow-down formatIcons"
+                                                    (click)="marginTopIncrement()"></i>
+                                                <i class="fa fa-arrows-alt formatIcons"
+                                                    (click)="marginTopBalance()"></i>
+                                                <i class="fa fa-arrow-up formatIcons"
+                                                    (click)="marginTopDecrement()"></i>
                                                 <!-- <input id="margin-top" type="range" (change)="changeDrawing()" [(ngModel)]="top"
                                                     name="points" min="20" max="1800"> -->
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-6 col-md-6">
+                                        <div class="col-xl-3 col-md-3">
                                             <label for="margin-left">Margin Left</label>
                                             <div class="form-group">
-                                                <i class="fa fa-arrow-left formatIcons" (click)="marginLeftIncrement()"></i>
-                                                <i class="fa fa-arrows-alt formatIcons" (click)="marginLeftBalance()"></i>
-                                                <i class="fa fa-arrow-right formatIcons" (click)="marginLeftDecrement()"></i>
+                                                <i class="fa fa-arrow-left formatIcons"
+                                                    (click)="marginLeftIncrement()"></i>
+                                                <i class="fa fa-arrows-alt formatIcons"
+                                                    (click)="marginLeftBalance()"></i>
+                                                <i class="fa fa-arrow-right formatIcons"
+                                                    (click)="marginLeftDecrement()"></i>
                                                 <!-- <input id="margin-left" type="range" (change)="changeDrawing()"
                                                     [(ngModel)]="left" name="points" min="10" max="1600"> -->
                                             </div>
@@ -146,33 +161,40 @@
                                     </div>
 
                                 </div>
-                                <div id="shadowStyle" class=" tab-pane fade"><br>
+                                <div id="shadowStyle" class="container tab-pane fade"><br>
                                     <div class="row">
 
-                                        <div class="col-xl-2 col-md-6 mb-4">
+                                        <div class="col-xl-2 col-md-2 mb-4">
                                             <label for="">Shadow color</label>
                                             <div class="form-group">
-                                                <input type="color" id="shadowColor" (change)="changeDrawing()" [(ngModel)]="shadowColor" class="form-control">
+                                                <input type="color" id="shadowColor" (change)="changeDrawing()"
+                                                    [(ngModel)]="shadowColor" class="form-control">
                                             </div>
                                         </div>
 
-                                        <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                                        <div class="col-xl-3 col-md-3 mb-4">
                                             <label for="ShadowY">ShadowX</label>
                                             <div id="ShadowY" class="form-group">
-                                                <i class="fa fa-arrow-left formatIcons" (click)="shadowLeftIncrement()"></i>
-                                                <i class="fa fa-arrows-alt formatIcons" (click)="shadowLeftBalance()"></i>
-                                                <i class="fa fa-arrow-right formatIcons" (click)="shadowLeftDecrement()"></i>
+                                                <i class="fa fa-arrow-left formatIcons"
+                                                    (click)="shadowLeftIncrement()"></i>
+                                                <i class="fa fa-arrows-alt formatIcons"
+                                                    (click)="shadowLeftBalance()"></i>
+                                                <i class="fa fa-arrow-right formatIcons"
+                                                    (click)="shadowLeftDecrement()"></i>
                                                 <!-- <input type="range" (change)="changeDrawing()" [(ngModel)]="shadowY"
                                                     name="points" min="0" max="100"> -->
                                             </div>
                                         </div>
 
-                                        <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+                                        <div class="col-xl-3 col-md-3 mb-4">
                                             <label for="shadowX">shadowY</label>
                                             <div class="form-group">
-                                                <i class="fa fa-arrow-up formatIcons" (click)="shadowTopDecrement()"></i>
-                                                <i class="fa fa-arrows-alt formatIcons" (click)="shadowTopBalance()"></i>
-                                                <i class="fa fa-arrow-down formatIcons" (click)="shadowTopIncrement()"></i>
+                                                <i class="fa fa-arrow-up formatIcons"
+                                                    (click)="shadowTopDecrement()"></i>
+                                                <i class="fa fa-arrows-alt formatIcons"
+                                                    (click)="shadowTopBalance()"></i>
+                                                <i class="fa fa-arrow-down formatIcons"
+                                                    (click)="shadowTopIncrement()"></i>
                                                 <!-- <input id="shadowX" type="range" (change)="changeDrawing()"
                                                     [(ngModel)]="shadowX" name="points" min="0" max="100"> -->
                                             </div>
@@ -180,9 +202,9 @@
                                     </div>
 
                                 </div>
-                                <div id="strockStyle" class=" tab-pane fade"><br>
+                                <div id="strockStyle" class="container tab-pane fade"><br>
                                     <div class="row">
-                                        <div class="col-xl-2 col-lg-6 col-md-6 mb-4">
+                                        <div class="col-xl-2 col-md-2 mb-4">
                                             <label for="">Strock</label>
                                             <div class="form-group">
 
@@ -196,22 +218,26 @@
                                             </div>
                                         </div>
 
-                                        <div *ngIf="strock" class="col-xl-2 col-lg-6 col-md-6 mb-4">
+                                        <div *ngIf="strock" class="col-xl-2 col-md-2 mb-4">
                                             <label for="fill-color">Fill Color</label>
                                             <div class="form-group">
-                                                <input [disabled]="!strock" id="fill-color" type="color" (change)="changeDrawing()" [(ngModel)]="fillColor" class="form-control">
+                                                <input [disabled]="!strock" id="fill-color" type="color"
+                                                    (change)="changeDrawing()" [(ngModel)]="fillColor"
+                                                    class="form-control">
                                             </div>
                                         </div>
-                                        <div *ngIf="strock" class="col-xl-2 col-lg-6 col-md-6 mb-4">
+                                        <div *ngIf="strock" class="col-xl-2 col-md-2 mb-4">
                                             <label for="font-color">Font Color</label>
                                             <div class="form-group">
-                                                <input id="font-color" type="color" (change)="changeDrawing()" [(ngModel)]="textColor" class="form-control">
+                                                <input id="font-color" type="color" (change)="changeDrawing()"
+                                                    [(ngModel)]="textColor" class="form-control">
                                             </div>
                                         </div>
-                                        <div *ngIf="strock" class="col-xl-2 col-md-6 mb-4">
+                                        <div *ngIf="strock" class="col-xl-2 col-md-2 mb-4">
                                             <label for="">Strock width</label>
                                             <div class="form-group">
-                                                <input [disabled]="!strock" type="range" (change)="changeDrawing()" [(ngModel)]="strockWidth" name="points" min="1" max="100">
+                                                <input [disabled]="!strock" type="range" (change)="changeDrawing()"
+                                                    [(ngModel)]="strockWidth" name="points" min="1" max="100">
                                             </div>
                                         </div>
                                     </div>
@@ -222,20 +248,22 @@
                     <form [formGroup]="newsForm" (ngSubmit)="onSubmit()">
                         <div class="row">
                             <div class="col-xl-12 col-md-12">
-                                <label for="newsTitle">News title<span class="asterisk">*</span></label>
+                                <label for="newsTitle">News title</label>
                                 <div class="form-group">
-                                    <input formControlName="news_title" id="newsTitle" type="text" class="form-control" />
+                                    <input formControlName="news_title" id="newsTitle" type="text"
+                                        class="form-control" />
                                     <div *ngIf="submitted && f.news_title.errors" class="validation-feedback">
                                         <div *ngIf="f.news_title.errors.required">News title is required</div>
-                                        <div *ngIf="f.news_title.errors.maxlength">News title will not allow 100 characters.
-                                        </div>
+                                        <div *ngIf="f.news_title.errors.maxlength">News title will not allow 100
+                                            characters.</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-12 col-md-12">
-                                <label for="news_description">News description<span class="asterisk">*</span></label>
+                                <label for="newsTitle">News description</label>
                                 <div class="form-group">
-                                    <textarea formControlName="news_description" id="news_description" (keyup)="changeDrawing()" class="form-control" rows="2"></textarea>
+                                    <textarea formControlName="news_description" id="newsTitle"
+                                        (keyup)="changeDrawing()" class="form-control" rows="2"></textarea>
                                     <div *ngIf="submitted && f.news_description.errors" class="validation-feedback">
                                         <div *ngIf="f.news_description.errors.required">News description is required
                                         </div>
@@ -243,9 +271,10 @@
                                 </div>
                             </div>
                             <div class="col-xl-12 col-md-12">
-                                <label for="term_condition">Terms and condition</label>
+                                <label for="newsTitle">Terms & condition</label>
                                 <div class="form-group">
-                                    <textarea formControlName="term_condition" id="term_condition" (keyup)="changeDrawing()" class="form-control" rows="2"></textarea>
+                                    <textarea formControlName="term_condition" id="newsTitle" (keyup)="changeDrawing()"
+                                        class="form-control" rows="2"></textarea>
                                     <div *ngIf="submitted && f.term_condition.errors" class="validation-feedback">
                                         <div *ngIf="f.term_condition.errors.required">News terms & condition is required
                                         </div>
@@ -255,8 +284,8 @@
                             </div>
                             <div class="col-xl-12 col-md-12">
                                 <div class="row">
-                                    <!-- <div class="col-xl-6 col-md-6">
-                                        <label for="newsTitle">Start date time<span class="asterisk">*</span></label>
+                                    <div class="col-xl-6 col-md-6">
+                                        <label for="newsTitle">Start date time</label>
                                         <div class="form-group">
                                             <input class="form-control" formControlName="start_date_time"
                                                 [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12" [selectMode]="'single'"
@@ -270,13 +299,16 @@
                                                     getter then current date time.</div>
                                             </div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="col-xl-6 col-md-6">
-                                        <label for="newsTitle">End date time<span class="asterisk">*</span></label>
+                                        <label for="newsTitle">End date time</label>
                                         <div class="form-group">
-                                            <input class="form-control" formControlName="end_date_time" [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" [selectMode]="'single'" [min]="min" required>
-                                            <owl-date-time hour12Timer="true" #dt13></owl-date-time>
-                                            <div *ngIf="submitted && f.end_date_time.errors" class="validation-feedback">
+                                            <input class="form-control" formControlName="end_date_time"
+                                                [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" [selectMode]="'single'"
+                                                [min]="f.start_date_time.value" required>
+                                            <owl-date-time #dt13></owl-date-time>
+                                            <div *ngIf="submitted && f.end_date_time.errors"
+                                                class="validation-feedback">
                                                 <div *ngIf="f.end_date_time.errors.required">End date time is required
                                                 </div>
                                             </div>
@@ -285,7 +317,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-12 col-md-12 mb-4">
-                                <label for="newsTitle">Enabled<span class="asterisk">*</span></label>
+                                <label for="newsTitle">Enabled</label>
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <label class="switch">
@@ -297,11 +329,8 @@
                             </div>
                             <div class="col-xl-12 col-md-12">
                                 <div class="row">
-                                    <div class="col-xs-6 col-md-4 col-lg-4">
+                                    <div class="col-xs-12 col-md-4 col-lg-4">
                                         <button type="submit" class="btns btn-1 btn-1b">Save</button>
-                                    </div>
-                                    <div class="col-xs-6 col-md-4 col-lg-4">
-                                        <a routerLink="/home/news" type="submit" class="btns btn-1 btn-1b btnsc">Cancel</a>
                                     </div>
                                     <div class="col-xs-12 col-md-9"></div>
                                 </div>
@@ -313,7 +342,7 @@
             </div>
         </div>
 
-        <div class="col-xl-3 col-lg-3 col-md-3 mb-4">
+        <div class="col-xl-3 col-md-3 mb-4">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -322,7 +351,8 @@
                 <!-- Card Body -->
                 <div class="card-body historyBox" #scrollMe [scrollTop]="scrollMe.scrollHeight">
                     <div class="textList">
-                        <div class="textListItem" *ngFor="let text of texts;let i= index" [ngClass]="{'active': i==selectedTextIndex}" (click)="selectTextIndex(i)">
+                        <div class="textListItem" *ngFor="let text of texts;let i= index"
+                            [ngClass]="{'active': i==selectedTextIndex}" (click)="selectTextIndex(i)">
                             <i class="fa fa-font fontstyle"></i>
                             <span [ngStyle]="{fontFamily: getFontFamily(text.fontFamily)}">{{text.text}}</span>
                         </div>
@@ -332,7 +362,7 @@
         </div>
 
 
-        <div class="col-xl-3 col-lg-3 col-md-3 mb-4">
+        <div class="col-xl-3 col-md-3 mb-4">
             <div class="row">
                 <div class="col-xl-12 col-md-12">
                     <div class="card shadow">
@@ -344,9 +374,14 @@
                         <div class="card-body">
                             <div class="previewdiv">
                                 <canvas id="canvas" style="display: none;" #canvasEl width=800 height=600></canvas>
-                                <img class="n-p-i" (mousedown)="onMouseMove($event)" draggable="true" (dragend)="onMouseDragEnd($event)" *ngIf="storeNewsDetails.id != undefined" src="{{imageUrl}}" alt="" crossorigin (dragover)="allowDrop($event)" />
+                                <img class="n-p-i" (mousedown)="onMouseMove($event)" draggable="true"
+                                    (dragend)="onMouseDragEnd($event)" *ngIf="storeNewsDetails.id != undefined"
+                                    src="{{imageUrl}}" alt="" crossorigin (dragover)="allowDrop($event)" />
                                 <div>
-                                    <div (mousedown)="onMouseMove($event)" draggable="true" id="previewImage" (dragover)="allowDrop($event)" (dragend)="onMouseDragEnd($event)" *ngIf="storeNewsDetails.id != undefined" class="n-p-i-overlay" style="background-color: red;"></div>
+                                    <div (mousedown)="onMouseMove($event)" draggable="true" id="previewImage"
+                                        (dragover)="allowDrop($event)" (dragend)="onMouseDragEnd($event)"
+                                        *ngIf="storeNewsDetails.id != undefined" class="n-p-i-overlay"
+                                        style="background-color: red;"></div>
                                 </div>
                             </div>
                         </div>
@@ -363,7 +398,8 @@
                         </div> -->
                         <!-- Card Body -->
                         <div class="card-body">
-                            <owl-carousel [options]="carouselOptions" [items]="images" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                            <owl-carousel [options]="carouselOptions" [items]="images"
+                                [carouselClasses]="['owl-theme', 'row', 'sliding']">
                                 <div class="item" *ngFor="let image of images;let i= index">
                                     <img (click)="drawImage($event,image)" class="slide-image" src="{{image.image}}">
                                 </div>

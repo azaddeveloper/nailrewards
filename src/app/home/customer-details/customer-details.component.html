@@ -28,13 +28,13 @@
                                 <img src="{{customerDetails.profile_image}}" alt="John" style="width:100%">
                             </ng-template>
                             <h3>{{customerDetails.first_name}} {{customerDetails.last_name}}</h3>
-                            <p class="">DOB : {{customerDetails.dob | date}}</p>
+                            <p class="">DOB : {{customerDetails.dob | date:"dd/MM/yyyy"}}</p>
 
-                            <p *ngIf="customerDetails.contact_number != '' && customerDetails.contact_number != null"><i class="fa fa-phone"></i> {{customerDetails.contact_number}}</p>
+                            <p><i class="fa fa-phone"></i> {{customerDetails.contact_number}}</p>
                             <p><i class="fa fa-envelope"></i> {{customerDetails.email}}</p>
                             <ul class="reward-points">
                                 <li>
-                                    <p>Available Reward Points</p>
+                                    <p>Availabe Reward Points</p>
                                     <span
                                         class="number t_visit">{{ customerDetails.earned_points | currency:' ':'symbol':'1.0-0' }}</span>
 
@@ -62,63 +62,76 @@
 
                     </div>
 
-                   
-
-
                 </div>
 
-            </div>
-
-            <div class="shadow mb-4">
-                <div class="row">
-                    <div class="col-md-12" *ngIf="ratingDetails">
-                       <div class="card">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Rating and review</h6>
-                            </div>
-                            <div class="card-body m-b-30">
-                                <div class="rating_user_pic">
-                                            <img *ngIf="ratingDetails.image==''; else ragtingImage"
-                                                src="assets/img/no_image.png">
-                                            <ng-template #ragtingImage>
-                                                <img src="{{ratingDetails.image}}">
-                                            </ng-template>
-                                </div>
-                                <div class="rating_user_comment">
-                                    <h5 class="card-title">Rating ({{ratingDetails.rating}} star )</h5>
-                                    <p class="card-text">{{ratingDetails.feedback}}</p>
-                                    <div class="star-ratings">
-                                        <div class="fill-ratings" style="width: 100%;">
-                                            <span *ngFor="let item of arrayOne(rating); let i = index;">★ </span>
-                                        </div>
-                                        <div class="empty-ratings">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-12 col-lg-12" data-step="6" data-intro="<b>Transaction Chart</b><hr> This is showing the chart for transactions at your store with respective months." data-position='left'>
-                    <app-amount-chart *ngIf="customerDetails.customer_transaction_chart !=undefined" chartTitle="Transaction" [data]=customerDetails.customer_transaction_chart></app-amount-chart>
-                </div>
             </div>
         </div>
         <!---Right PART-->
         <div class="col-md-12 col-lg-6 col-xl-8">
             <div class="card shadow mb-4">
+
                 <div class="card-body">
-                    <div class="row workarea">
-                        <div class="col-md-12 col-lg-12 col-xl-6 rightPanel basic_info form_border-right">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-6">
+                            <form [formGroup]="redeemRewardForm" (ngSubmit)="redeemReward()">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12 col-xs-12 rightPanel basic_info">
+
+                                        <h6 class="m-b-30 font-weight-bold text-left text-primary">Redeem Reward</h6>
+                                        <hr class="colorgraph">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                <div class="form-group">
+                                                    <label>Reward code</label>
+                                                    <input type="text" formControlName="redeem_code"
+                                                        class="form-control input-lg"
+                                                        style="text-transform: uppercase;">
+                                                    <div *ngIf="rewardSubmitted && f1.redeem_code.errors"
+                                                        class="validation-feedback">
+                                                        <div *ngIf="f1.redeem_code.errors.required">Redeem code is
+                                                            required</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                <div class="form-group">
+                                                    <label>Remark</label>
+                                                    <textarea formControlName="remark"
+                                                        class="form-control input-lg"> </textarea>
+                                                    <div *ngIf="rewardSubmitted && f1.remark.errors"
+                                                        class="validation-feedback">
+                                                        <div *ngIf="f1.remark.errors.required">Remark is
+                                                            required</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-md-12 col-lg-12 col-xl-6"><button
+                                                                class="btns  btn-1 btn-1b">Save</button></div>
+                                                        <div class="col-xs-12 col-md-9"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-xl-6 rightPanel basic_info">
                             <form [formGroup]="transactionHistoryForm" (ngSubmit)="addTransaction()">
                                 <h6 class="m-b-30 font-weight-bold text-left text-primary">Add Transaction</h6>
                                 <hr class="colorgraph">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <div class="form-group">
-                                            <label>Transaction amount<span class="asterisk">*</span></label>
+                                            <label>Transaction amount</label>
                                             <input formControlName="spend_amount" type="text"
                                                 class="form-control input-lg">
                                             <div *ngIf="transactionSubmitted && f2.spend_amount.errors"
@@ -136,12 +149,13 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <div class="form-group">
-                                            <label>Services<span class="asterisk">*</span></label>
+                                            <label>Remark</label>
                                             <textarea formControlName="remark"
                                                 class="form-control input-lg"> </textarea>
                                             <div *ngIf="transactionSubmitted && f2.remark.errors"
                                                 class="validation-feedback">
-                                                <div *ngIf="f2.remark.errors.required"> Provide your service details here.</div>
+                                                <div *ngIf="f2.remark.errors.required"> Remark is
+                                                    required</div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-xs-12 col-md-12 col-lg-12 col-xl-6"><button
@@ -154,36 +168,41 @@
                             </form>
                         </div>
 
-                        <div class="col-md-12 col-lg-12 col-xl-6">
-                                <div class="row">
-                                    <div class="col-md-12 col-lg-12 col-xs-12 rightPanel basic_info">
-
-                                        <h6 class="m-b-30 font-weight-bold text-left text-primary">Redeem Reward</h6>
-                                        <hr class="colorgraph">
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 rewardlist" *ngIf="customerDetails.active_rewards?.length > 0; else noRecord">
-                                                <div class="active_reward" *ngFor="let reward of customerDetails.active_rewards; let i = index">
-                                                    <div class="reward_title">{{reward.reward_title}}</div>
-                                                        <div class="reward_description">{{reward.reward_description}}</div>
-                                                        <hr class="a-c-h">
-                                                        <div class="row">
-                                                            <div class="col-md-6 r-b-d">
-                                                                <button class="btn btn-success btn-sm" (click)="openRedeemDialog(reward)">Redeem</button>
-                                                                for {{reward.points_required}} points
-                                                            </div>
-                                                            <div class="col-md-6 r_e_d">Valid till {{reward.end_date_time|date:'MMM d, y, h:mm a'}}</div>
-                                                        </div>
+                        <div class="col-md-12" *ngIf="ratingDetails">
+                            <hr class="colorgraph">
+                            <h6 class="m-b-30 font-weight-bold text-left text-primary">Feedback by user</h6>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="rating_user_pic">
+                                                <img *ngIf="ratingDetails.image==''; else ragtingImage"
+                                                    src="assets/img/no_image.png">
+                                                <ng-template #ragtingImage>
+                                                    <img src="{{ratingDetails.image}}">
+                                                </ng-template>
+                                            </div>
+                                            <div class="rating_user_comment">
+                                                <h5 class="card-title">Feedback ({{ratingDetails.rating}} star )</h5>
+                                                <p class="card-text">{{ratingDetails.feedback}}</p>
+                                                <div class="star-ratings" style="width: 126px;">
+                                                    <div class="fill-ratings" [ngStyle]="{'width':rating+'%'}">
+                                                        <span>★★★★★</span>
+                                                    </div>
+                                                    <div class="empty-ratings">
+                                                        <span>★★★★★</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <ng-template #noRecord class="row">
-                                                <div class="col-md-12" style="text-align: center;">
-                                                    No reward available
-                                                </div>
-                                              </ng-template>
+
+
                                         </div>
                                     </div>
+
                                 </div>
+                            </div>
                         </div>
+
 
                         <div class="col-md-12" *ngIf="transactionHistory.length && showDataTable">
                             <hr class="colorgraph">
@@ -209,7 +228,7 @@
                                                         role="row"
                                                         [ngClass]="transaction.transaction_type=='c'?'success':'danger'">
                                                         <td>
-                                                            {{transaction.transaction_id}}
+                                                            <a href="">{{transaction.transaction_id}}</a>
                                                         </td>
                                                         <td>{{transaction.type_remark}}</td>
                                                         <td>{{transaction.transaction_date | date}}</td>
@@ -224,6 +243,9 @@
                                 </div>
                             </div>
                         </div>
+
+
+
                     </div>
 
                 </div>
@@ -233,4 +255,3 @@
 
 </div>
 <!-- /.container-fluid -->
-
