@@ -1,0 +1,145 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Add Reward</h1>
+    </div>
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card shadow mb-4">
+                <!-- <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Add Reward</h6>
+            </div> -->
+                <div class="card-body">
+                    <form [formGroup]="rewardForm" (ngSubmit)="onSubmit()">
+                        <div class="row" id="main">
+                            <div class="col-md-12 col-lg-6 col-xs-12 rightPanel" id="leftPanel">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="reward_title">Reward name<span class="asterisk">*</span></label>
+                                            <input type="text" formControlName="reward_title" id="reward_title"
+                                                class="form-control input-lg" placeholder="Reward Name">
+                                            <div *ngIf="submitted && f.reward_title.errors" class="validation-feedback">
+                                                <div *ngIf="f.reward_title.errors.required">Reward name is required
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="points_required">Required point<span class="asterisk">*</span></label>
+                                            <input type="text" formControlName="points_required" id="points_required"
+                                                class="form-control input-lg" placeholder="Required point">
+                                            <div *ngIf="submitted && f.points_required.errors"
+                                                class="validation-feedback">
+                                                <div *ngIf="f.points_required.errors.required">Required point is
+                                                    required
+                                                </div>
+                                                <div *ngIf="f.points_required.errors.pattern">Required point contains number only
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="start_date_time">Start date time<span class="asterisk">*</span></label>
+                                            <input type="text" formControlName="start_date_time" id="start_date_time"
+                                                class="form-control input-lg" placeholder="Start Date"
+                                                [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12" [selectMode]="'single'"
+                                                [min]="min" (dateTimeChange)=changeDate($event)>
+                                            <owl-date-time hour12Timer="true" #dt12></owl-date-time>
+                                            <div *ngIf="submitted && f.start_date_time.errors"
+                                                class="validation-feedback">
+                                                <div *ngIf="f.start_date_time.errors.required">Start date time is
+                                                    required
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="end_date_time">End date time<span class="asterisk">*</span></label>
+                                            <input type="text" formControlName="end_date_time" id="end_date_time"
+                                                [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" [selectMode]="'single'"
+                                                [min]="f.start_date_time.value" class="form-control input-lg"
+                                                placeholder="End Date">
+                                            <owl-date-time hour12Timer="true" #dt13></owl-date-time>
+                                            <div *ngIf="submitted && f.end_date_time.errors"
+                                                class="validation-feedback">
+                                                <div *ngIf="f.end_date_time.errors.required">End date time is required
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="reward_description">Description<span class="asterisk">*</span></label>
+                                            <textarea type="text" formControlName="reward_description"
+                                                id="reward_description" class="form-control input-lg"
+                                                placeholder="Description"></textarea>
+                                            <div *ngIf="submitted && f.reward_description.errors"
+                                                class="validation-feedback">
+                                                <div *ngIf="f.reward_description.errors.required">Description is required
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="term_condition">Terms and condition</label>
+                                            <textarea type="text" formControlName="term_condition" id="term_condition"
+                                                class="form-control input-lg"
+                                                placeholder="Term's and Condition"></textarea>
+                                                <div *ngIf="submitted && f.term_condition.errors"
+                                                class="validation-feedback">
+                                                <div *ngIf="f.term_condition.errors.required">Term's and Condition is required
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <label style="margin-right: 35px;">Enabled<span class="asterisk">*</span></label>
+                                        <div class="checkbox ">
+                                            <label class="switch ">
+                                                <input type="checkbox" class="default" formControlName="enabled" value="true">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-4 col-lg-4"><button
+                                            class="btns  btn-1 btn-1b">Save</button></div>
+                                    <div class="col-xs-12 col-md-9"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-xs-12 rightPanel">
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

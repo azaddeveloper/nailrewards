@@ -1,0 +1,108 @@
+.text-gray {
+    color: #858796;
+  }
+  
+  .blog_img {
+    width: 105px;
+  }
+  
+  .blog_desc p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+    margin-bottom: 0;
+  }
+  
+  .News td {
+    vertical-align: middle;
+  }
+  
+  .card_img {
+    position: relative;
+  }
+  
+  .card_img .card-header {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+  }
+  
+  .card_img .card-header h4 {
+    color: #fff !important;
+  }
+  
+  .card-body .dropdown {
+    float: right;
+    position: relative;
+    top: -15px;
+  }
+  
+  .bg_image {
+    float: left;
+    width: 100%;
+    padding: 20px 0;
+    overflow-x: auto;
+  }
+  
+  .bg_image img {
+    width: 100%;
+    height: 70px;
+  }
+  .news-img{
+    width: 100%;
+    height: 100%;
+  }
+
+  /* overlay */
+
+  .card_img {
+    position: relative;
+    width: 100%;
+  }
+  
+  .image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1%;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    background-image: radial-gradient(#fff, #f16500);
+  }
+  
+  .card_img:hover .overlay {
+    height: 100%;
+    opacity: 0.96;
+  }
+
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  /* overlay */
+  .btns{
+    width: auto !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+  }

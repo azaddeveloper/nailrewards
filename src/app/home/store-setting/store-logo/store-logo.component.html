@@ -1,0 +1,56 @@
+<div class="card shadow mb-4" data-step="3" data-intro="<strong>Store Logo</strong> <hr>Brand your Rewards App with your logo. Upload your logo here so your customers will see it while using the app." data-position='top'>
+    <div class="card-header" id="headingFive">
+        <h5 class="mb-0">
+            <button class="btn btn-link m-0 font-weight-bold text-primary card-header collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <i class="fa fa-image fa-color-heading"></i>
+        Store logo
+      </button>
+        </h5>
+    </div>
+    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+        <div class="card-body">
+            <form [formGroup]="storeLogoForm" (submit)="onSubmit()">
+                <div class="row" id="main">
+                    <div class="col-md-12 col-lg-12 col-xl-6 col-xs-12 rightPanel" id="leftPanel">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="logo_img">
+                                    <div class="store_logo">
+                                        <!-- <img src="{{store_logo}}" alt="Texto Alternativo" class=""> -->
+
+
+                                        <img *ngIf="store_logo==''; else storeLogo" src="assets/img/no_image.png" alt="Texto Alternativo">
+
+                                        <ng-template #storeLogo>
+                                            <img src="{{store_logo}}" alt="Texto Alternativo">
+                                        </ng-template>
+
+
+
+                                    </div>
+                                    <div class="btn-group browse_pic" ngbTooltip="Change store logo">
+                                        <input formControlName="userfile" type="file" class="btn btn-pic" (change)="handleFileInput($event.target.files)">
+                                        <i class="fas fa-fw fa-camera upload-logo-btn"></i>
+                                    </div>
+                                </div>
+                                <div *ngIf="submitted && f.userfile.errors" class="validation-feedback">
+                                    <div *ngIf="f.userfile.errors.required">Select a file to change logo.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-3 col-xl-3"><button class="btns  btn-1 btn-1b">Save</button>
+                            </div>
+                            <div class="col-xs-12 col-md-9"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

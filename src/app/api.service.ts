@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, BehaviorSubject } from "rxjs";
-import { environment } from '../environments/environment';
+import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-
+import { AuthService } from './auth/auth.service';
+import { NotifierService } from "angular-notifier";
 
 
 
@@ -14,6 +15,8 @@ export class ApiService {
   private headers = new HttpHeaders();
   constructor(private http: HttpClient,
     private router: Router,
+    private authService: AuthService,
+    private readonly notifier: NotifierService
   ) { }
 
   getHeader() {
@@ -32,35 +35,269 @@ export class ApiService {
     });
     return this.headers;
   }
+  getLoggedUser(): Observable<any> {
+    return this.http.get(
+      environment.apiUrl + environment.apiEndPoints.isLoggedIn,
+      { headers: this.getHeader() }
+    ); 
+  }
+  // updatestorePIN(pin: number,storeId): Observable<any> {
+   
 
-  getCustomerDetails(value){
+  //   const headers = new HttpHeaders({
+  //     "Content-Type": environment.contentType,
+  //     Authorization: environment.authorization
+  //   });
+  //   return this.http.post(
+  //     environment.apiUrl + environment.apiEndPoints.storePinUpdate,
+  //     body,
+  //     { headers: headers }
+  //   );
+  // }
+  updatestorePIN(pin: number,storeId): Observable<any> {
     var body = {};
-    body['phone_number'] = value.phone_number;
-    body['country_code'] = value.country_code;
-    body['store_id'] = value.storeId;
-
-    body['from'] = 'customer';
-
-    const headers = new HttpHeaders({ 'Content-Type': environment.contentType, 'Authorization': environment.authorization }).set("Access-Control-Allow-Origin","*");
-    return this.http.post(environment.apiUrl + environment.apiEndPoints.getCustomerDetials,
+    body["pin"] = pin;
+    body["storeId"] = storeId;
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.storePinUpdate,
       body,
-      { headers: headers }
+      { headers: this.getHeader() }
+
     );
   }
-  getStrodeDetails(store_id){
-    var body = {};
-    body['store_code'] = store_id;
 
-    console.log(store_id,'aaaaaaaaa')
-    const headers = new HttpHeaders({ 'Content-Type': environment.contentType, 'Authorization': environment.authorization }).set("Access-Control-Allow-Origin","*");
-    return this.http.post(environment.apiUrl + environment.apiEndPoints.getStoreDetials,
+  homePage(): Observable<any> {
+    return this.http.get(environment.apiUrl + environment.apiEndPoints.homePage, { headers: this.getHeader() });
+  }
+  addStoreNews(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.addStoreNews,
       body,
-      { headers: headers }
+      { headers: this.getHeader() }
+
+    );
+  }
+  updateStoreNews(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.updateStoreNews,
+      body,
+      { headers: this.getHeader() }
+
+    );
+  }
+
+  getStoreNews(): Observable<any> {
+    return this.http.get(environment.apiUrl + environment.apiEndPoints.getStoreNews, { headers: this.getHeader() });
+  }
+  deleteStoreNews(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.deleteStoreNews,
+      body,
+      { headers: this.getHeader() }
+
+    );
+  }
+  getOneStoreNews(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.getOneStoreNews,
+      body,
+      { headers: this.getHeader() }
+
+    );
+  }
+  getOneStoreReward(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.getOneStoreReward,
+      body,
+      { headers: this.getHeader() }
+
+    );
+  }
+
+  getStoreRewards(): Observable<any> {
+    return this.http.get(environment.apiUrl + environment.apiEndPoints.getStoreRewards, { headers: this.getHeader() });
+  }
+  updateUserProfile(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.updateUserProfile,
+      body,
+      { headers: this.getHeader() }
+
+    );
+  }
+  changePassword(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.changePassword,
+      body,
+      { headers: this.getHeader() }
+
+    );
+  }
+  addStoreRewards(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.addStoreRewards,
+      body,
+      { headers: this.getHeader() }
+
     );
   }
   
+  autoNotification(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.autoNotification,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+  updateStoreRewards(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.updateStoreRewards,
+      body,
+      { headers: this.getHeader() }
 
+    );
+  }
+  deleteStoreReward(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.deleteStoreReward,
+      body,
+      { headers: this.getHeader() }
 
+    );
+  }
+  updateStoreHours(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.updateStoreHours,
+      body,
+      { headers: this.getHeader() }
+
+    );
+  }
+  uploadStoreLogo(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.uploadStoreLogo,
+      body,
+      { headers: this.getHeaderForUpload() }
+
+    );
+  }
+  uploadStoreMenu(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.uploadStoreMenu,
+      body,
+      { headers: this.getHeaderForUpload() }
+
+    );
+  }
+  updateRewardSettings(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.updateRewardSettings,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+  updateAppearanceSettings(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.updateAppearanceSettings,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+  customerList(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.customerList,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+  globleCustomerList(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.globleCustomerList,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+  customerDetail(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.customerDetail,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+  redeemReward(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.redeemReward,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+  customerTransaction(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.customerTransaction,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+  updateStoreInformation(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.updateStoreInformation,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+  updateSocialLinks(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.updateSocialLinks,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+
+  sendNotification(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.sendNotification,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
   
+  deleteAutoNotificaiton(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.deleteAutoNotificaiton,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+
+  templateFilesForPanels(): Observable<any> {
+    return this.http.get(
+      environment.apiUrl + environment.apiEndPoints.templateFilesForPanels,
+      { headers: this.getHeader() }
+    );
+  }
+  
+  autoNotificationList(): Observable<any> {
+    return this.http.get(
+      environment.apiUrl + environment.apiEndPoints.autoNotificationList,
+      { headers: this.getHeader() }
+    );
+  }
+  
+  storeAverageRating(): Observable<any> {
+    return this.http.get(
+      environment.apiUrl + environment.apiEndPoints.storeAverageRating,
+      { headers: this.getHeader() }
+    ); 
+  }
+  
+  getRecentRating(body): Observable<any> {
+    return this.http.post(environment.apiUrl + environment.apiEndPoints.getRecentRating,
+      body,
+      { headers: this.getHeader() }
+    );
+  }
+
+  testLocaiton(): Observable<any> {
+    return this.http.get("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway&key=" + environment.google_map_api_key);
+  }
+ 
+
+
+  handleError(error,show=true) {
+    console.log(error);
+    switch (error.status) {
+      case 401:
+        localStorage.removeItem("AUTH_TOKEN");
+        this.authService.isLogged.next(false);
+        this.router.navigate(['login']);
+        break;
+      case 500:
+        this.notifier.notify("error", "Something went wrong. Please try again after sometime.");
+        break;
+      case 404:
+        if(show==true){
+          this.notifier.notify("error", error.error.message);
+        }
+        break;
+      default:
+        this.notifier.notify("error", "Something went wrong. Please try again after sometime.");
+        break;
+    }
+
+  }
 
 }

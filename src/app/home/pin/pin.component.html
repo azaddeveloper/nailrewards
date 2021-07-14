@@ -1,0 +1,32 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">PIN</h1>
+    </div>
+<form name="form" (ngSubmit)="f.form.valid && onStoreSubmit()" #f="ngForm" novalidate>
+
+    <div class="card-body">
+        <div class="form-group">
+        <div class="form-group">
+          <label for="" class="h4">Change PIN</label>
+          <div class="row">
+              <div class="col-md-2">
+            <input (keypress)="numericOnly($event)" type="text" class="form-control" name="pin" [(ngModel)]="storeDetails.pin" 
+            #pin="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pin.invalid }" required minlength="6" maxlength="6" />
+            <div *ngIf="f.submitted && pin.invalid" class="invalid-feedback">
+                <div *ngIf="pin.errors.required">PIN is required</div>
+                <div *ngIf="pin?.touched && pin?.errors.minlength" >PIN must be 6 digits</div>
+
+            </div>
+            </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button [disabled]='storeDefaultpin == storeDetails.pin' class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  </div>

@@ -1,0 +1,89 @@
+<div class="card shadow mb-4" data-step="6" data-intro="<strong>Social Media Links</strong> <hr>Add your social media links here for them to be visible in the app. Your google business page will allow for users to provide Google ratings from the app." data-position='top'>
+    <div class="card-header" id="headingSeven">
+        <h5 class="mb-0">
+            <button class="btn btn-link m-0 font-weight-bold text-primary card-header collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                <i class="fa fa-globe fa-color-heading"></i>
+                Social Media Links
+            </button>
+        </h5>
+    </div>
+    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+        <div class="card-body">
+            <form [formGroup]="socialLinkForm" (submit)="onSubmit()">
+                <div class="row" id="main">
+                    <div class="col-md-12 col-lg-12 col-xl-6 col-xs-12 rightPanel" id="leftPanel">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="twitter_link"><i class="fab fa-twitter-square"></i>
+                                                Twitter</label>
+                                            <input class="form-control" type="text" formControlName="twitter_link" id="twitter_link">
+                                            <div *ngIf="submitted && f.twitter_link.errors" class="validation-feedback">
+                                                <div *ngIf="f.twitter_link.errors.pattern">Please enter valid link. e.g. https://twitter.com/yourpage/
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="facebook_link"><i class="fab fa-facebook"></i> Facebook </label>
+                                            <input class="form-control" type="text" formControlName="facebook_link" id="facebook_link">
+                                            <div *ngIf="submitted && f.facebook_link.errors" class="validation-feedback">
+                                                <div *ngIf="f.facebook_link.errors.pattern">Please enter valid link. e.g. https://facebook.com/yourpage/
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="instagram_link"><i class="fab fa-instagram"></i> Instagram
+                                            </label>
+                                            <input class="form-control" type="text" formControlName="instagram_link" id="instagram_link">
+                                            <div *ngIf="submitted && f.instagram_link.errors" class="validation-feedback">
+                                                <div *ngIf="f.instagram_link.errors.pattern">Please enter valid link. e.g. https://www.instagram.com/yourpage/
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="google_link"><i class="fab fa-google"></i> Google business page
+                                            </label>
+                                            <input class="form-control" type="text" formControlName="google_link" id="google_link">
+                                            <div *ngIf="submitted && f.google_link.errors" class="validation-feedback">
+                                                <div *ngIf="f.google_link.errors.pattern">Please enter valid link. e.g. https://g.co/kgs/yourpage
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="schedule_appointment"><i class="fas fa-calendar"></i> Schedule appointment link
+                                            </label>
+                                            <input class="form-control" type="text" formControlName="schedule_appointment" id="schedule_appointment">
+                                            <div *ngIf="submitted && f.schedule_appointment.errors" class="validation-feedback">
+                                                <div *ngIf="f.schedule_appointment.errors.pattern">Please enter valid link. e.g. https://g.co/kgs/yourpage
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-3 col-xl-3"><button class="btns  btn-1 btn-1b">Save</button>
+                            </div>
+                            <div class="col-xs-12 col-md-9"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

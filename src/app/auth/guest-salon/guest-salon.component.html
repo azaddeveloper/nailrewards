@@ -1,0 +1,202 @@
+<div  class="limiter">
+  <div  class="container-login100">
+     <div  class="wrap-login100">
+           <div  class="admin_logo text-center p-b-35"><img  src="assets/img/nali-logo.png" width="100px"></div>
+           <span  *ngIf="salonDetails" style="font-size: 18px;"  class="login100-form-title p-b-18">{{salonDetails.store_name}} {{salonDetails.store_code}}</span>
+           <div class="container " *ngIf="custEnquiry.length !=  0 && salon">
+           <!-- <div *ngIf="custEnquiry.length !=  0" style="margin-top: 15px;"> -->
+            <div class="card mt-12 shadow-lg mb-12">
+                <div class="card-header">
+                    <h5 style="color: #e09033;"> Waiting for Customer​</h5>
+                </div>
+                <div *ngIf="custEnquiry" class="card-body">
+                  <div style="cursor: pointer;" *ngFor="let enquiry of custEnquiry; let i = index" (click)='getCustomerDetails(enquiry.contact_number,salonDetails.store_code)'>
+                    <h5  class="card-title mb-2 pb-3"> <span class="text-success"></span> {{enquiry.first_name}} {{enquiry.last_name}} </h5>
+                    <p class="border-bottom" style="margin-top: -23px;">{{enquiry.contact_number}}</p>
+                  </div>
+                </div>
+                <div *ngIf="!custEnquiry" class="card-body">
+                  <div >
+                    <h5  class="card-title mb-2 pb-3"> <span class="text-success"></span> No customer available. </h5>
+                  </div>
+                </div>
+               
+            </div>
+        </div>
+           <main>
+            <div class="container " *ngIf="salon">
+               <form name="form" (ngSubmit)="f.form.valid && onStoreSubmit()" #f="ngForm" novalidate>
+                    <div class="wrap-input100 validate-input m-b-25" data-validate="Username is required">
+                        <input  placeholder="Enter Customer Phone Number" (keypress)="numericOnly($event)" maxlength="17" type="number" class="input100"
+                        name="phone_number" [(ngModel)]="custPhonenumber.phone_number" #phone_number="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && phone_number.invalid }" required />
+                      
+                      <span class="focus-input100"></span>
+                      <div *ngIf="f.submitted && phone_number.invalid" class="invalid-feedback">
+                        <div *ngIf="phone_number.errors.required">Phone number is required</div>
+                      </div>
+                    </div>
+                    <div class="container-login100-form-btn m-t-17"> 
+                      <button class="login100-form-btn">
+                        Submit  
+                      </button>
+                    </div>
+                   </form>
+           </div>
+            <div *ngIf="!salon" class="container" > 
+              <h4 *ngIf="customerDetails.length !=  0" style="font-weight: 700;" class="text-center mt-4">Customer Name : {{customerDetails.customer?.first_name}}
+                {{customerDetails.customer?.last_name}}</h4>
+              <!-- <h4 class="text-center mt-2">Customer Name: {{customerDetails.customer.first_name}} {{customerDetails.customer.last_name}}</h4> -->
+              <div *ngIf="addreward" class="">
+                <!-- <form name="form" (ngSubmit)="f.form.valid && onRewardSubmit()" #f="ngForm" novalidate>
+                  <div class="card-body" >
+                    <div class="form-group text-center">
+                      <div class="form-group">
+                       
+                        <label for="" class="h4">Add Reward Points</label>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <input (keypress)="numericOnly($event)" maxlength="17" type="text" class="form-control"
+                              name="reward" [(ngModel)]="custReward.reward" #reward="ngModel"
+                              [ngClass]="{ 'is-invalid': f.submitted && reward.invalid }" required />
+                            <div *ngIf="f.submitted && reward.invalid" class="invalid-feedback">
+                              <div *ngIf="reward.errors.required">Reward amount is required</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-primary">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </form> -->
+
+                <form name="form" (ngSubmit)="f.form.valid && onRewardSubmit()" #f="ngForm" novalidate>
+                  <div class="wrap-input100 validate-input m-b-25" data-validate="Username is required">
+                      <!-- <input autocomplete="off" placeholder="Enter Phone Number" (keypress)="numericOnly($event)" maxlength="17" type="text" class="input100"
+                      name="phone_number" [(ngModel)]="custPhonenumber.phone_number" #phone_number="ngModel"
+                      [ngClass]="{ 'is-invalid': f.submitted && phone_number.invalid }" required /> -->
+
+                      <input autocomplete="off" placeholder="Add Reward Points" (keypress)="numericOnly($event)" maxlength="17" type="text" class="input100"
+                              name="reward" [(ngModel)]="custReward.reward" #reward="ngModel"
+                              [ngClass]="{ 'is-invalid': f.submitted && reward.invalid }" required />
+                    
+                    <span class="focus-input100"></span>
+                   <div *ngIf="f.submitted && reward.invalid" class="invalid-feedback">
+                              <div *ngIf="reward.errors.required">Reward amount is required</div>
+                            </div>
+                  </div>
+                  <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn">
+                      Submit
+                    </button>
+                  </div>
+                 </form>
+        
+              </div>
+        
+        
+            
+              <div *ngIf="rewardConfirm" class=" ">
+        
+                <form  name="form" (ngSubmit)="f.form.valid && onRewardPINSubmit()" #f="ngForm" novalidate>
+                  <div class="form-group text-center" style="margin-top: 10px;">
+                    <div class="form-group">
+                      
+                      <label style="margin-bottom: 12px;" for="" class="h4">Are you sure?</label>
+                      <!-- <div class="row" style="margin-top: 8px;"> -->
+                        <!-- <div class="col-md-4">
+                          <h4>PIN</h4>
+                        </div> -->
+                        <!-- <div class="col-md-4"> -->
+                          <input autocomplete="off" style="background-color:#e6e6e6;" placeholder="PIN" (keypress)="numericOnly($event)" maxlength="17" type="text" class="input100" name="pin"
+                            [(ngModel)]="custPIN.pin" #pin="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pin.invalid }"
+                            required />
+                          <div *ngIf="f.submitted && pin.invalid" class="invalid-feedback">
+                            <div *ngIf="pin.errors.required">PIN is required</div>
+                          </div>
+                        <!-- </div> -->
+        
+                      <!-- </div> -->
+                    </div>
+                    <div class="form-group">
+                      <button style="width: 45%;
+                      height: 62px;margin:5px;" class="btn btn-primary">Yes</button>
+                      <button style="width: 45%;
+                      height: 62px;" (click)="rewardNo()" type="button" class="btn btn-primary">No</button>
+        
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div *ngIf="customerDetails.length !=  0 && !customerRewardSuccess && selectedRewardId == 0" style="margin-top: 15px;">
+                <div class="card mt-12 shadow-lg mb-12">
+                    <div class="card-header">
+                        <h5 style="color: #e09033;"> Available Rewards</h5>
+                    </div>
+                    <div *ngIf="customerDetails.active_rewards.length > 0" class="card-body">
+                        <!-- <h5 *ngFor="let rewards of customerDetails.active_rewards" class="card-title mb-2 pb-3 border-bottom">
+                          {{rewards.reward_title}} - {{rewards.points_required}} reward points is required</h5> -->
+
+                          <div class="active_reward" *ngFor="let reward of customerDetails.active_rewards; let i = index">
+                            <div style="    font-size: 19px;
+                            font-weight: 700;
+                            text-transform: capitalize;" class="reward_title">{{reward.reward_title}}</div>
+                                <div style="height: 0;    margin-bottom: 2rem;" class="reward_description">{{reward.reward_description}}</div>
+                                <!-- <hr class="a-c-h"> -->
+                                <div class="row">
+                                    <div class="col-md-6 r-b-d">
+                                        <button class="btn btn-success btn-sm" (click)="onRewardSubmit(reward.redeem_code)">Redeem</button>
+                                        For {{reward.points_required}} points
+                                    </div>
+                                    <div style="font-size: 12px;" class="col-md-6 r_e_d">Valid till {{reward.end_date_time|date:'MMM d, y, h:mm a'}}</div>
+                                </div>
+                                <hr class="a-c-h">
+
+                        </div>
+                        <!-- <h5 class="card-title"> <span class="text-success">$20</span> off on next services</h5> -->
+
+                    </div>
+                    <div *ngIf="customerDetails.active_rewards.length == 0" class="card-body">
+                      <h5  class="card-title mb-2 pb-3 border-bottom"> <span class="text-success"></span> No rewards available.</h5>
+                      <!-- <h5 class="card-title"> <span class="text-success">$20</span> off on next services</h5> -->
+
+                  </div>
+                </div>
+            </div>
+              <!-- <div class="row mt-3">
+        
+                      <div *ngIf="customerDetails.active_rewards.length > 0" class="col-8 text-center mx-auto ">
+                          <h5 class="text-center mb-3">Redeem Rewards</h5>
+        
+                              <a *ngFor="let rewards of customerDetails.active_rewards"  href="javascript:void(0);" class="btn btn-primary">${{rewards.points_required}} off {{rewards.reward_title}}</a>
+                      </div>
+                      <div *ngIf="customerDetails.active_rewards.length == 0" class="col-8 text-center mx-auto ">
+                        <h5 class="text-center mb-3">No reward available</h5>
+                    </div>
+                  </div> -->
+            </div>
+        
+            <div class="container" *ngIf="customerRewardSuccess">
+              <!-- <h4 class="text-center mt-4">Customer Name {{customerDetails.customer.first_name}} -->
+                <!-- {{customerDetails.customer.last_name}}</h4> -->
+              <h6 class="text-center mb-4">Earned {{custReward.reward}} Points</h6>
+              <div class="text-center">
+                <button (click)="returnToDashboard()" type="button" class="btn btn-primary w-100s ">Return to Dashboard</button>
+              </div>
+            </div>
+          </main>
+           <!-- <div  class="container-login100-form-btn m-t-17"><button  class="login100-form-btn"> Login </button></div> -->
+        <!-- </form> -->
+     </div>
+  </div>
+</div>
+<notifier-container></notifier-container>
+
+<!-- <ngx-spinner></ngx-spinner> -->
+
+
+
+

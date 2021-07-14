@@ -1,0 +1,229 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Customers</h1>
+        <button (click)="showFilter()" class="btns btn-1 btn-1b" data-step="1" data-position="left" data-intro="<b>Filter Options</b><hr> Use these filters to find customers or to filter to specific list. Example: Create a list of customers to find all the customers that haven’t visited within last 60 days. Use this list to send a special notification to just them.">
+      <i class="fas fa-filter fa-sm text-white-100"></i> Filters
+    </button>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Content Column -->
+
+        <div class="col-md-12">
+            <div *ngIf="isFilterEnabled" class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        Advanced filter options
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!-- <label for="cutomer_name">Cutomer Information</label> -->
+                            <div class="checkbox">
+                                <span class="font-weight-bold text-primary">Customer Information</span
+                >
+                <label
+                  class="switch filter-switch"
+                  ngbTooltip="{{ cust_info ? 'Disabled' : 'Enabled' }}"
+                  data-placement="right"
+                >
+                  <input
+                    type="checkbox"
+                    class="default"
+                    [(ngModel)]="cust_info"
+                    (change)="setFilter()"
+                  />
+                  <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="row" [ngStyle]="{ opacity: cust_info ? '1' : '0.4' }">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="cutomer_name">Name</label>
+                                        <input type="text" [(ngModel)]="name" id="cutomer_name" class="form-control" [disabled]="!cust_info" (keyup)="filterData()" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="cutomer_name">Email</label>
+                                        <input type="text" [(ngModel)]="cust_email" id="cutomer_name" class="form-control" [disabled]="!cust_info" (keyup)="filterData()" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="cutomer_contact">Contact No</label>
+                                        <input type="text" [(ngModel)]="contactNumber" id="cutomer_contact" class="form-control" [disabled]="!cust_info" (keyup)="filterData()" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="checkbox">
+                                <span class="font-weight-bold text-primary">Reward point</span>
+                                <label class="switch filter-switch" ngbTooltip="{{ reward_point ? 'Disabled' : 'Enabled' }}" data-placement="right">
+                  <input
+                    type="checkbox"
+                    class="default"
+                    [(ngModel)]="reward_point"
+                    (change)="setFilter()"
+                  />
+                  <span class="slider round"></span>
+                </label>
+                            </div>
+                            <div class="row" [ngStyle]="{ opacity: reward_point ? '1' : '0.4' }">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="reward_point_min">Min</label>
+                                        <input type="number" id="reward_point_min" (keyup)="filterData()" [(ngModel)]="point_min" class="form-control" [disabled]="!reward_point" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="reward_point_max">Max</label>
+                                        <input type="number" id="reward_point_max" (keyup)="filterData()" [(ngModel)]="point_max" class="form-control" [disabled]="!reward_point" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="checkbox">
+                                <span class="font-weight-bold text-primary">Birthday</span>
+                                <label class="switch filter-switch" ngbTooltip="{{ birth_day ? 'Disabled' : 'Enabled' }}" data-placement="right">
+                  <input
+                    type="checkbox"
+                    class="default"
+                    [(ngModel)]="birth_day"
+                    (change)="setFilter()"
+                  />
+                  <span class="slider round"></span>
+                </label>
+                            </div>
+                            <div class="row" [ngStyle]="{ opacity: birth_day ? '1' : '0.4' }">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="birthday_form">From</label>
+                                        <input type="text" [(ngModel)]="birthday_min" id="birthday_form" class="form-control" [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12" (dateTimeChange)="filterData()" [disabled]="!birth_day" />
+                                        <owl-date-time #dt12 [pickerType]="'calendar'"></owl-date-time>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="birthday_to">To</label>
+                                        <input type="text" [(ngModel)]="birthday_max" id="birthday_to" class="form-control" [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" (dateTimeChange)="filterData()" [disabled]="!birth_day" />
+                                        <owl-date-time #dt13 [pickerType]="'calendar'"></owl-date-time>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="checkbox">
+                                <span class="font-weight-bold text-primary">Last visit</span>
+                                <label class="switch filter-switch" ngbTooltip="{{ last_visit ? 'Disabled' : 'Enabled' }}" data-placement="right">
+                  <input
+                    type="checkbox"
+                    class="default"
+                    [(ngModel)]="last_visit"
+                    (change)="setFilter()"
+                  />
+                  <span class="slider round"></span>
+                </label>
+                            </div>
+                            <div class="row" [ngStyle]="{ opacity: last_visit ? '1' : '0.4' }">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="last_visit_form">From</label>
+                                        <input type="text" [(ngModel)]="lastVisit_min" id="last_visit_form" class="form-control" [owlDateTimeTrigger]="dt14" [owlDateTime]="dt14" (dateTimeChange)="filterData()" [disabled]="!last_visit" />
+                                        <owl-date-time #dt14 [pickerType]="'calendar'"></owl-date-time>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="last_visit_to">To</label>
+                                        <input type="text" [(ngModel)]="lastVisit_max" id="last_visit_to" class="form-control" [owlDateTimeTrigger]="dt15" [owlDateTime]="dt15" (dateTimeChange)="filterData()" [disabled]="!last_visit" />
+                                        <owl-date-time #dt15 [pickerType]="'calendar'"></owl-date-time>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow mb-4">
+                <!-- <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Customer List</h6>
+        </div> -->
+                <div class="card-body" data-step="2" data-intro="<b>Customer List</b><hr> This will show all the customers in your list. You can export this list to excel or send notifications directly to this list. Use the check option on the left to determine who to send notifications to.">
+                    <div class="table-responsive cust_point">
+                        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="row">
+                                <div class="col-sm-12" *ngIf="customerList.length; else noRecord">
+                                    <table class="table table-bordered dataTable" datatable id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;" [dtOptions]="dtOptions">
+                                        <thead>
+                                            <tr role="row">
+                                                <th></th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Contact no.</th>
+                                                <th>Birthday</th>
+                                                <th>Last visit</th>
+                                                <th>Reward point</th>
+                                                <th>Notification</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr role="row" *ngFor="let customer of customerList; let i = index">
+                                                <td> </td>
+                                                <td (click)="navigateToUserDetails(customer)">
+                                                    <!-- <a
+                            [routerLink]="['/home/customerDetails']"
+                            [queryParams]="{
+                              customer_id: customer.customer_id
+                            }"
+                          > -->
+                                                    {{ customer.first_name }} {{ customer.last_name }}
+                                                    <!-- </a> -->
+                                                </td>
+                                                <td>
+                                                    {{ customer.email }}
+                                                </td>
+                                                <td>{{ customer.contact_number.toString() }}</td>
+                                                <td>{{ customer.dob | date }}</td>
+                                                <td>
+                                                    {{ customer.last_visit | date }}
+                                                </td>
+                                                <td>
+                                                    <span *ngIf="customer.balance; else elseBlock1">
+                            {{ customer.balance }}
+                          </span>
+                                                    <ng-template #elseBlock1>0</ng-template>
+                                                </td>
+                                                <td style="text-transform: capitalize;">
+                                                    {{customer.notification}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <ng-template #noRecord class="row">
+                                    <div class="col-md-12" style="text-align: center;">
+                                        No record found
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->

@@ -1,79 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ApiService } from './api.service'
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NotifierModule } from 'angular-notifier';
-import { ToastrModule } from 'ngx-toastr';
+import { AppService } from './app.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppComponent } from './app.component';
+import { GuestGuard } from './auth/guest.guard';
+import { LoggedInGuard } from './auth/logged-in.guard';
+import { AuthModule } from './auth/auth.module';
+import { HomeModule } from './home/home.module';
 import { NgxSpinnerModule } from "ngx-spinner";
-import { CountdownModule,CountdownGlobalConfig  } from 'ngx-countdown';
-import { Routes, RouterModule } from '@angular/router';
-import { CustomerComponent } from './customer/customer.component';
-const appRoutes: Routes = [
-  { path: ':id', component: CustomerComponent },
-];
+
+export function app_init(appService: AppService) {
+  return () => appService.initializeApp();
+}
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerComponent 
+    
   ],
   imports: [
     BrowserModule,
-    // AppRoutingModule,
+    AppRoutingModule,
+    AuthModule,
     HttpClientModule,
-    FormsModule,
+    HomeModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     NgxSpinnerModule,
-    CountdownModule ,
-    RouterModule.forRoot(
-      appRoutes,
 
-    ),
-    ToastrModule.forRoot({
-      timeOut: 8000,
-      positionClass: 'toast-top-right',
-      preventDuplicates: true,
-    }),
-    NotifierModule.withConfig({
-      theme: "material",
-      position: {
-        horizontal: {
-          position: 'right',
-          distance: 12
-        },
-        vertical: {
-          position: 'top',
-          distance: 12,
-          gap: 10
-        }
-      },
-      animations: {
-        enabled: true,
-        show: {
-          preset: 'slide',
-          speed: 300,
-          easing: 'ease'
-        },
-        hide: {
-          preset: 'fade',
-          speed: 300,
-          easing: 'ease',
-          offset: 50
-        },
-        shift: {
-          speed: 300,
-          easing: 'ease',
-        },
-        overlap: 150
-      }
-    }),
+    ],
+  providers: [GuestGuard, LoggedInGuard, AppService,
+    {
+      provide: APP_INITIALIZER, useFactory: app_init, deps: [AppService], multi: true
+    }
   ],
-  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

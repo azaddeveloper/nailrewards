@@ -1,0 +1,228 @@
+/*--------------USER DETAIL SHOW START HERE--------*/
+
+.userInfo .card {
+    text-align: center;
+  }
+  
+  .userInfo .fa-phone {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+  }
+  
+  .userInfo i {
+    color: #f16500;
+    margin-right: 15px;
+    vertical-align: middle;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  .userInfo h3 {
+    margin-top: 15px;
+  }
+  
+  .userInfo ul {
+    margin: 15px 0 15px 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .userInfo ul li {
+    display: inline-block;
+    padding: 10px 8px;
+    border-right: 1px solid #4e73df;
+    width: 170px;
+    max-width: 100%;
+  }
+  
+  .userInfo ul li:last-child {
+    border: none;
+  }
+  
+  .userInfo ul li p {
+    margin-bottom: 0;
+  }
+  
+  .t_visit {
+    color: #1cc88a;
+  }
+  
+  .t_reward {
+    color: #e74a3b;
+  }
+  
+  .t_transact {
+    color: #36b9cc;
+  }
+  
+  .userInfo .number {
+    font-size: 25px;
+    font-weight: 600;
+  }
+  
+  .basic_info div.form-control {
+    border: none;
+    padding: 14px;
+  }
+  
+  .star-ratings {
+    unicode-bidi: bidi-override;
+    color: #ccc;
+    font-size: 30px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .star-ratings .fill-ratings {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  
+  .star-ratings .fill-ratings span {
+    display: inline-block;
+  }
+  
+  .star-ratings .empty-ratings {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
+  
+  .rating_user_pic, .rating_user_comment {
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .rating_user_pic {
+    width: 160px;
+    padding-right: 25px;
+  }
+  
+  .rating_user_pic img {
+    width: 100%;
+  }
+  
+  .rating_user_comment h5 {
+    font-weight: 700;
+  }
+  
+  .rating_user_comment .card-text {
+    margin-bottom: 0;
+  }
+  
+  @media(max-width:1366px) {
+    .userInfo ul li {
+      width: auto;
+      padding: 10px 10px;
+    }
+    .rating_user_pic {
+      width: 138px;
+    }
+  }
+  
+  @media(max-width:1024px) {
+    .rating_user_comment {
+      margin-top: 20px;
+    }
+    .userInfo ul li {
+      width: auto;
+      padding: 5px;
+    }
+    .userInfo .number {
+      font-size: 25px;
+    }
+  }
+  
+  @media(max-width:991px) {
+    .rating_user_comment {
+      margin-top: 20px;
+    }
+    .userInfo ul li {
+      width: 150px;
+      padding: 5px;
+    }
+  }
+  
+  @media(max-width:767px) {
+    .userInfo ul li {
+      width: auto;
+      padding: 5px;
+    }
+    .userInfo ul li {
+      border: none;
+    }
+  }
+
+  .reward-points{
+    background-color: #f16500;
+  }
+  .reward-points li p,.reward-points li span{
+    color: white;
+  }
+
+  tr.success{
+    color: green;
+  }
+  tr.danger{
+    color: red;
+  }
+
+  .form_border-right{
+    border-right: 1px solid #e5e5e5;
+  }
+  
+  .workarea{
+    display:flex;
+  }
+
+  .rewardlist{
+    padding: 0px 10px;
+    background-color: white;
+    overflow-y: auto;
+    height: 285px;
+  }
+
+  .active_reward{
+    margin: 10px 0px 5px 4px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important
+  }
+
+  .active_reward > .reward_title{
+    font-weight: 800;
+    text-transform: capitalize;
+  }
+
+  .active_reward > .reward_description{
+    font-size: small;
+    text-transform: capitalize;
+  }
+
+  .r_e_d{
+    font-size: x-small;  
+    text-align: right;
+  }
+
+  .r-b-d{
+
+  }
+
+  .a-c-h{
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  /*--------------End USER DETAIL SHOW START HERE--------*/

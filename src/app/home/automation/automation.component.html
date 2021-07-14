@@ -1,0 +1,164 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Automated notifications</h1>
+    </div>
+    <!-- Content Row -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card shadow mb-4">
+          <!-- <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Add Reward</h6>
+              </div> -->
+          <div class="card-body">
+             <form [formGroup]="automationForm" (ngSubmit)="onSubmit()">
+              <div class="row" id="main">
+                <div
+                  class="col-md-12 col-lg-6 col-xs-12 rightPanel"
+                  id="leftPanel"
+                >
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                      <div class="form-group">
+                        <label for="reward_title"
+                          >Notification Type<span class="asterisk">*</span></label
+                        >
+                       <select class="form-control" formControlName="notification_type">
+                           <option selected value="1">Birth Day</option>
+                           <option value="2">Last Visit</option>
+                       </select>
+                        <div
+                          *ngIf="submitted && f.notification_type.errors"
+                          class="validation-feedback"
+                        >
+                          <div *ngIf="f.notification_type.errors.required">
+                            Notification type is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6" *ngIf="f.notification_type.value=='1'; else elseBlock">
+                      <div class="form-group">
+                        <label for="days"><span>Days before</span>
+                            <span class="asterisk">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          formControlName="days"
+                          id="days"
+                          class="form-control input-lg"
+                          placeholder="Days before"
+                        />
+                        <div
+                          *ngIf="submitted && f.days.errors"
+                          class="validation-feedback"
+                        >
+                          <div *ngIf="f.days.errors.required">
+                            Days is required
+                          </div>
+                          <div *ngIf="f.days.errors.pattern">
+                            Days contains number only
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ng-template #elseBlock>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                              <label for="days"><span>Days after</span>
+                                  <span class="asterisk">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                formControlName="days"
+                                id="days"
+                                class="form-control input-lg"
+                                placeholder="Days after"
+                              />
+                              <div
+                                *ngIf="submitted && f.days.errors"
+                                class="validation-feedback"
+                              >
+                                <div *ngIf="f.days.errors.required">
+                                  Days is required
+                                </div>
+                                <div *ngIf="f.days.errors.pattern">
+                                  Days contains number only
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </ng-template>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="form-group">
+                        <label for="message"
+                          >Message<span class="asterisk">*</span>
+                          <span style="font-size: 10px; font-weight: bold; width: 25px; background-color: grey; border-radius: 50px; color: white; padding: 2px;" *ngIf="f.message.value.length > 0">{{f.message.value.length}}</span>
+                          </label
+                        >
+                      <textarea formControlName="message" class="form-control" rows="5"></textarea>
+                        <div
+                          *ngIf="submitted && f.message.errors"
+                          class="validation-feedback"
+                        >
+                          <div *ngIf="f.message.errors.required">
+                            Message is required
+                          </div>
+                          <div *ngIf="f.message.errors.maxlength || f.message.errors.minlength">
+                            Character length allowed between 50 to 255.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-xs-6 col-md-4 col-lg-4">
+                      <button type="submit" class="btns btn-1 btn-1b">
+                        Save
+                      </button>
+                    </div>
+                    <div class="col-xs-6 col-md-4 col-lg-4">
+                      <button class="btns btn-1 btn-1b btnsc" type="button" (click)="resetForm()">Cancel</button>
+                    </div>
+  
+                    <div class="col-xs-12 col-md-9"></div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xs-12 rightPanel" *ngIf="ifData">
+
+                  <div class="n-l" *ngFor="let notification of autoNotification">
+                      <div class="n-l-t-d">
+                        {{notification.notification_type==1?"Birth Day":"Last Visit"}}
+                        <span class="n-l-d" *ngIf="notification.notification_type==1; else elseBlock">Before {{notification.days}} days</span>
+                        <ng-template #elseBlock>
+                          <span class="n-l-d">
+                            After {{notification.days}} days
+                          </span>
+                         </ng-template>
+                        <span  class="n-l-a" style="float: right;">
+                          <i class="fa fa-edit" (click)="editNotification(notification)" ngbTooltip="Edit"></i> |
+                          <i class="fa fa-times-circle" (click)="openConfirmationDialog(notification)" ngbTooltip="Delete" style="cursor: pointer;"></i>
+                          </span>
+                      </div>
+                      <div class="">{{notification.message}}</div>
+                     
+                  </div>
+
+
+                </div>
+              </div>
+            </form> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+  

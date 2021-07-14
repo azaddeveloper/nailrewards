@@ -1,1 +1,285 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files 
+@import url("./assets/vendor/fontawesome-free/css/all.min.css");
+@import url("./assets/css/sb-admin-2.css");
+@import url("./assets/css/dataTables.bootstrap4.min.css");
+*/
+
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+.js .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.notifier__notification-message{
+    width: 350px;
+}
+
+.inputfile-1+label {
+    color: #f1e5e6;
+    background-color: #d3394c;
+}
+
+.inputfile+label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+}
+
+.inputfile+label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+}
+
+.inputfile+label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+}
+
+.inputfile-1+label {
+    color: #f1e5e6;
+    background-color: #d3394c;
+}
+
+.Oprational_tl th {
+    background-color: #f16500;
+    color: #fff;
+    vertical-align: middle;
+}
+
+.Oprational_tl td {
+    vertical-align: middle;
+    padding: 5px 15px;
+}
+
+.rightPanel .Oprational_tl .form-control {
+    height: auto;
+}
+
+.store_logo {
+    height: 143px;
+    width: 100%;
+    margin: auto;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 20px 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.store_logo img {
+    height: 100%;
+    border: none;
+}
+
+.logo_img {
+    width: 50%;
+    margin: auto;
+    position: relative;
+}
+
+.logo_img .browse_pic {
+    bottom: -13px;
+    right: -15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: #f16500;
+    border: 2px solid #fff;
+    position: absolute;
+    top: initial;
+}
+
+
+/*---INPUT STYLING CSS  HERE----**/
+
+.rightPanel .form-control {
+    height: calc(1.5em + 0.75rem + 16px);
+    border-radius: 3px;
+    background-color: #f8f9fc;
+}
+
+.colorgraph {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.m-b-30 {
+    margin-bottom: 30px;
+}
+
+.p-t-20 {
+    padding-top: 20px;
+}
+
+.btn-block {
+    margin: 20px 0;
+    background-color: #f16500;
+    color: #fff;
+}
+
+.btn-pic {
+    width: 30px;
+    height: 30px;
+    background-color: #f16500;
+    border-radius: 50%;
+    display: block;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+.browse_pic i {
+    position: absolute;
+    top: 7px;
+    left: 5px;
+    color: #fff;
+}
+
+.browse_pic {
+    top: -35px;
+    right: -60px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: #f16500;
+    border: 2px solid #fff;
+}
+
+.btn-1 {
+    border: 3px solid #f16500;
+    color: #fff;
+}
+
+.btns {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 12px 0px;
+    display: inline-block;
+    margin: 15px 0px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    z-index: 9;
+    width: 100%;
+}
+
+a.btnsc {
+    text-align: center;
+    text-decoration: none !important;
+}
+
+.btn-1b:after {
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    background: #f16500;
+}
+
+.btns:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.btn-1b:hover:after {
+    height: 100%;
+    background: #f16500;
+}
+
+.btn-1b:hover {
+    color: #fff;
+}
+
+.fa-color-heading {
+    color: tomato;
+    margin-right: 20px;
+    font-size: 22px;
+}
+
+.complete-selected>.searchSuggetion>.suggestion_hint {
+    background-color: rgba(158, 158, 158, .18);
+}
+
+#accordionSidebar {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+}
+
+footer.sticky-footer {
+    flex-shrink: 0;
+    padding: 2rem 0;
+    flex-shrink: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    z-index: 9;
+}
+
+#accordionSidebar {
+    top: 0 !important;
+    position: fixed !important;
+    z-index: 10 !important;
+}
+
+.setting_accordian .card-header {
+    padding: 1.75rem 1.25rem
+}
+
+.asterisk {
+    color: #ff4d4d;
+}
+
+.dataTables_wrapper th {
+    min-width: 120px !important;
+}
+
+@media (max-width: 991px) {
+    .color_previewImage,
+    .previewImageDiv {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .inputfile+label {
+        width: 100%;
+        max-width: 100%;
+    }
+}

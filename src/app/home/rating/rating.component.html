@@ -1,0 +1,118 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Store rating</h1>
+  </div>
+  <!-- Content Row -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow mb-4">
+        <!-- <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Add Reward</h6>
+              </div> -->
+        <div class="card-body">
+         <div class="row">
+            <div class="col-md-6 col-lg-6 col-xs-6" style="padding: 0px 20px; border-right: 1px solid grey;">
+                <div class="col-md-12" *ngIf="avgData">
+                <span (click)="getRecentRating(0)" ngbTooltip="Click to view recent feedback." class="heading">Average Rating</span>
+                <span (click)="getRecentRating(0)" ngbTooltip="Click to view recent feedback." class="a-r-s">{{avgRating.avg_rating}}</span>
+                <p>based on {{avgRating.total_review}} reviews.</p>
+                <hr style="border: 3px solid #f1f1f1;" />
+    
+                <div class="row" >
+                  <div class="side">
+                    <div>5 star</div>
+                  </div>
+                  <div (click)="getRecentRating(5)" class="middle" ngbTooltip="Click to view recent feedback with 5 stars.">
+                    <div class="bar-container">
+                      <div class="bar-5" [style.width.%]="avgRating.ratings_counts['5']/avgRating.total_review*100"> </div>
+                    </div>
+                  </div>
+                  <div class="side right">
+                    <div>{{avgRating.ratings_counts["5"]}}</div>
+                  </div>
+                  <div class="side">
+                    <div>4 star</div>
+                  </div>
+                  <div (click)="getRecentRating(4)" class="middle" ngbTooltip="Click to view recent feedback with 4 stars.">
+                    <div class="bar-container">
+                      <div class="bar-4" [style.width.%]="avgRating.ratings_counts['4']/avgRating.total_review*100"></div>
+                    </div>
+                  </div>
+                  <div class="side right">
+                    <div>{{avgRating.ratings_counts["4"]}}</div>
+                  </div>
+                  <div class="side">
+                    <div>3 star</div>
+                  </div>
+                  <div (click)="getRecentRating(3)" class="middle" ngbTooltip="Click to view recent feedback with 3 stars.">
+                    <div class="bar-container">
+                      <div class="bar-3" [style.width.%]="avgRating.ratings_counts['3']/avgRating.total_review*100"></div>
+                    </div>
+                  </div>
+                  <div class="side right">
+                    <div>{{avgRating.ratings_counts["3"]}}</div>
+                  </div>
+                  <div class="side">
+                    <div>2 star</div>
+                  </div>
+                  <div (click)="getRecentRating(2)" class="middle" ngbTooltip="Click to view recent feedback with 2 stars.">
+                    <div class="bar-container">
+                      <div class="bar-2" [style.width.%]="avgRating.ratings_counts['2']/avgRating.total_review*100"></div>
+                    </div>
+                  </div>
+                  <div class="side right">
+                    <div>{{avgRating.ratings_counts["2"]}}</div>
+                  </div>
+                  <div class="side">
+                    <div>1 star</div>
+                  </div>
+                  <div (click)="getRecentRating(1)" class="middle" ngbTooltip="Click to view recent feedback with 1 star.">
+                    <div class="bar-container">
+                      <div class="bar-1" [style.width.%]="avgRating.ratings_counts['1']/avgRating.total_review*100"></div>
+                    </div>
+                  </div>
+                  <div class="side right">
+                    <div>{{avgRating.ratings_counts["1"]}}</div>
+                  </div>
+                </div>
+                </div>
+              </div>
+    
+              <div class="col-md-6 col-lg-6 col-xs-6">
+                  
+
+                    <div *ngIf="recentData">
+                        <span class="heading">Recent feedback</span>
+                        <p>&nbsp;</p>
+                        <hr style="border: 3px solid #f1f1f1;" />
+                        <div *ngFor="let rating of recentRating.recent_rating">
+                          <table width="100%">
+                            <tr>
+                                <td class="username">{{rating.first_name}} {{rating.last_name}}</td>
+                                <td class="user-stars"><span *ngFor="let item of arrayOne(rating.rating);">★ </span> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"> {{rating.feedback}}</td>
+                            </tr>
+                            <tr *ngIf="rating.image">
+                                <td colspan="2">
+                                    <img src="{{recentRating.image_url}}{{rating.image}}" alt="" style="width: 160px;">
+                                </td>
+                            </tr>
+                          </table>
+                          <hr>
+                           
+                            
+                        </div>
+                        
+                    </div>
+              </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->

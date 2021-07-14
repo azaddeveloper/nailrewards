@@ -1,0 +1,22 @@
+button.card-header{
+    text-align: left;
+    width: 100%;
+    border: none;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+  }
+  button.card-header:focus{
+    text-decoration: none !important;
+  }
+  .setting_accordian .card{
+    margin-bottom: 20px;
+  }
+  .card .card-header[data-toggle="collapse"]::after{
+    line-height: 30px !important;
+    color: #4e73df !important;
+  }
+
+  .upload-logo-btn,.browse_pic{
+      cursor: pointer !important;
+  }

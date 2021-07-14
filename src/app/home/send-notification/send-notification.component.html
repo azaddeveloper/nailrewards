@@ -1,0 +1,54 @@
+<form [formGroup]="notificationForm" (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+        <div>Send notification</div>
+    </div> 
+   <div class="modal-body">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            
+            <div class="form-group">
+                <label for="remark">To<span class="asterisk">*</span></label>
+                <div class="n_d_t">
+                      <span *ngFor="let customer of customers; let i = index"> <strong>{{customer.name}}</strong>&lt;{{customer.email}}&gt;;</span>
+                </div>
+            </div>
+        </div>  
+   </div>
+
+   <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <label for="subject">Subject/Title<span class="asterisk">*</span></label>
+                <input type="text" formControlName="title" class="form-control" id="subject"/>
+                <div *ngIf="submitted && f.title.errors" class="validation-feedback">
+                    <div *ngIf="f.title.errors.required">
+                        Subject is required.
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+
+   <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                 <label for="Message">Message/Notification<span class="asterisk">*</span></label>
+                 <textarea formControlName="notification" class="form-control" id="Message" rows="3"></textarea>
+                 <div *ngIf="submitted && f.notification.errors" class="validation-feedback">
+                    <div *ngIf="f.notification.errors.required">
+                        Message is required.
+                    </div>
+                </div>
+             </div>
+            </div>  
+    </div>
+ 
+  </div>
+     <div class="modal-footer">
+         <button (click)="activeModal.dismiss('Close clicked')" #closebtn style="width: 20%;" class="btns btns-link" type="button"
+             data-dismiss="modal">Cancel</button>
+         <button style="width: 20%;" class="btns btns-link btn-1 btn-1b" type="submit">Send</button>
+     </div>
+ 
+</form>

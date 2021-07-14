@@ -1,0 +1,13 @@
+/*-----ADD REWARD CSS HERE----------*/
+
+textarea.form-control{
+    height: 100px !important;
+  }
+  .reward_switch span,.reward_switch .checkbox{
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+
+  
+  /*-----END ADD REWARD CSS HERE------*/

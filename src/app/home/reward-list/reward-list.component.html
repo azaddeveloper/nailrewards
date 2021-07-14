@@ -1,0 +1,81 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Rewards</h1>
+
+        <a routerLink="/home/rewards/add" class="btns btn-1 btn-1b" data-step="3" data-intro="<b>Add Reward</b><hr> This option will allow you to create new rewards for your customers. Choose reward type, required points, active dates, description, and terms and conditions.">
+            <i class="fas fa-plus fa-sm text-white-100"></i> Add reward</a>
+    </div>
+
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow mb-4" data-step="1" data-intro="<b>Reward List</b><hr> This shows all of your active reward types that your customers will see in the app. You can edit, delete, or disable any reward you choose."
+                data-position='right'>
+                <!-- <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Customer List</h6>
+          </div> -->
+                <div class="card-body">
+                    <div class="table-responsive">
+
+
+                        <table *ngIf="tData; else noRecord" class="table table-bordered dataTable" datatable id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;" [dtOptions]="dtOptions">
+                            <thead>
+                                <tr role="row">
+                                    <th rowspan="1" colspan="1" style="width: 161px;">Reward Name</th>
+                                    <th rowspan="1" colspan="1" style="width: 115px;">
+                                        Required Points</th>
+                                    <th rowspan="1" colspan="1" style="width: 51px;">Start Date
+                                    </th>
+                                    <th rowspan="1" colspan="1" style="width: 51px;">Expiry Date
+                                    </th>
+
+                                    <th rowspan="1" colspan="1" style="width: 97px;">
+                                        Status
+                                    </th>
+                                    <th rowspan="1" colspan="1" style="width: 97px;">Action
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr *ngFor="let reward of storeReward; let i = index" role="row">
+                                    <td class="sorting_1">{{reward.reward_title}}</td>
+                                    <td>{{reward.points_required}}</td>
+                                    <td>{{reward.start_date_time|date:'MMM d, y, h:mm a'}}</td>
+                                    <td>{{reward.end_date_time|date:'MMM d, y, h:mm a'}}</td>
+                                    <td data-step="2" data-intro="<b>Status Toggle Button</b><hr> Use this button to enable or disable any reward. Disabling a reward will hide it from customer view.">
+                                        <div class="checkbox">
+                                            <label class="switch" ngbTooltip="{{reward.enabled==1?'disable':'enable'}}">
+                      <input type="checkbox" (change)="enableDisableReward(reward)" class="default"
+                        value="{{reward.enabled==1?true:false}}" [checked]="reward.enabled==1">
+                      <span class="slider round"></span>
+                    </label>
+                                        </div>
+                                    </td>
+                                    <td class="actions">
+                                        <a routerLink="/home/rewards/edit" ngbTooltip="Edit" [queryParams]="{reward_id: reward.reward_id}"><i
+                      class="fa fa-edit"></i></a> |
+                                        <i ngbTooltip="Delete" class="fa fa-times-circle" style="cursor: pointer;" (click)="openConfirmationDialog(i,reward)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ng-template #noRecord class="row">
+                        <div class="col-md-12" style="text-align: center;">
+                            No record found
+                        </div>
+                    </ng-template>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

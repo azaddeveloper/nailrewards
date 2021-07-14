@@ -1,0 +1,48 @@
+button.card-header{
+    text-align: left;
+    width: 100%;
+    border: none;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+  }
+  button.card-header:focus{
+    text-decoration: none !important;
+  }
+  .setting_accordian .card{
+    margin-bottom: 20px;
+  }
+  .card .card-header[data-toggle="collapse"]::after{
+    line-height: 30px !important;
+    color: #4e73df !important;
+  }
+
+  .upload-logo-btn,.browse_pic{
+      cursor: pointer !important;
+  }
+
+  /* map */
+  agm-map {
+    height: 300px;
+  }
+  .address{
+    margin-top: 2px;
+    color: #555;
+  }
+  .address > div {
+    color: #333;
+    font-family: Roboto,Arial;
+    font-size: 13px;
+    background-color: white;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    width: 180px;
+  }
+  .store-name-title{
+    overflow: hidden;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: capitalize;
+  }

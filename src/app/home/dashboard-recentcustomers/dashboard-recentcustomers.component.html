@@ -1,0 +1,63 @@
+<div class="row" data-step="7" data-intro="<b>Recent Customer List</b><hr> This list shows the 100 most recent registrations for your store." data-position="right">
+
+    <!-- Content Column -->
+
+
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Recent customers</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table *ngIf="recent_customers && recent_customers.length > 0" class="table table-bordered dataTable" datatable id="dataTable1" width="100%" cellspacing="0" [dtOptions]="dtOptions" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Contact no.</th>
+                                            <th>Birthday</th>
+                                            <th>Last visit</th>
+                                            <th>Point total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let customer of recent_customers; let i = index" role="row" class="odd" [ngClass]="{'even': (i % 2) == 0}">
+                                            <td class="sorting_1">
+                                                <a routerLink="/home/customerDetails" [queryParams]="{customer_id: customer.customer_id}">
+                                                    {{customer.first_name}} {{customer.last_name}}
+                                                </a>
+                                            </td>
+                                            <td>{{customer.email}}</td>
+                                            <td>{{customer.contact_number}}</td>
+                                            <td>{{customer.dob|date}}</td>
+                                            <td>
+                                                <span *ngIf="customer.last_visit; else elseBlock">
+                                                    {{customer.last_visit|date}}
+                                                </span>
+                                                <ng-template #elseBlock>-</ng-template>
+                                            </td>
+                                            <td>
+                                                <span *ngIf="customer.balance; else elseBlock">
+                                                    {{customer.balance}}
+                                                </span>
+                                                <ng-template #elseBlock>-</ng-template>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

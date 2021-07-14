@@ -1,0 +1,103 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/home">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Store Admin <sup></sup></div>
+        
+    </a>
+    <div style="color: white;" class="sidebar-brand-text mx-3">Store Code: {{sharedService.loggedInUser.storeDetails.store_code}} <sup></sup></div>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}">
+        <a class="nav-link" routerLink="/home" >
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+
+
+    <!-- Heading -->
+
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{match:['/home/customerList']}">
+        <a class="nav-link" routerLink="/home/customerList" >
+            <i class="fas fa-fw fa-user"></i>
+            <span>Customers</span></a>
+    </li>
+
+
+
+
+    <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Customer List</span>
+        </a>
+
+    </li> -->
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}">
+        <a class="nav-link" routerLink="/home/rewards">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Rewards</span></a>
+    </li>
+
+
+
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{match:['/news', '/news/add']}">
+        <a class="nav-link" routerLink="/home/news">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>News</span></a>
+    </li>
+
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{match:['/home/automation','/home/automation']}">
+        <a class="nav-link" routerLink="/home/automation/" >
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>Automated notifications</span></a>
+    </li>
+    
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{match:['/home/ratings','/home/ratings']}">
+        <a class="nav-link" routerLink="/home/ratings/" >
+            <i class="fas fa-fw fa-signal fa-rotate-45"></i>
+            <span>Store rating</span></a>
+    </li>
+
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{match:['/home/pin','/home/pin']}">
+        <a class="nav-link" routerLink="/home/pin/" >
+            <i class="fas fa-fw fa-eye"></i>
+            <span>PIN</span></a>
+    </li>
+
+    <!-- Nav Item - Charts -->
+    <!-- <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Reddem Points</span></a>
+    </li> -->
+
+    <!-- Nav Item - Tables -->
+    <!-- <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-dollar-sign"></i>
+            <span>Transactions</span></a>
+    </li> -->
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+</ul>
+<!-- End of Sidebar -->

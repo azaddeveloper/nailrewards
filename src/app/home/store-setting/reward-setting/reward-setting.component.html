@@ -1,0 +1,58 @@
+<div class="card shadow mb-4" data-step="5" data-intro="<strong>Reward Settings </strong> <hr>Control how many points your customers earn based on how much they spend." data-position='top'>
+    <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+            <button class="btn btn-link m-0 font-weight-bold text-primary card-header collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <i class="fa fa-star fa-color-heading"></i>
+        Reward Settings
+      </button>
+        </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div class="card-body">
+
+            <div class="row" id="main">
+
+                <div class="col-md-12 col-lg-12 col-xl-6 col-xs-12 rightPanel" id="leftPanel">
+                    <div class="row">
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
+                            <form [formGroup]="rewardSettingForm" (submit)="onSubmit()">
+
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="points_earn">Reward point per $100 spend<span class="asterisk">*</span></label>
+                                            <input type="" formControlName="points_earn" id="points_earn" class="form-control input-lg" placeholder="Reward point">
+                                            <div *ngIf="submitted && f.points_earn.errors" class="validation-feedback">
+                                                <div *ngIf="f.points_earn.errors.required">Reward point is required
+                                                </div>
+                                                <div *ngIf="f.points_earn.errors.pattern">Reward point contains number only
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 col-lg-6">
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-12 col-lg-3 col-xl-3"><button class="btns  btn-1 btn-1b">Save</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-9"></div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

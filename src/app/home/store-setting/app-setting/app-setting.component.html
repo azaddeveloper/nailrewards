@@ -1,0 +1,153 @@
+<div class="card shadow mb-4" data-step="7" data-intro="<strong>App Experience </strong> <hr>Control what features your customers see as well as the look and feel of your app. The app preview on the right side will show how the app will look with your color choices." data-position='top'>
+    <div class="card-header" id="headingFour">
+        <h5 class="mb-0">
+            <button class="btn btn-link m-0 font-weight-bold text-primary card-header collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <i class="fa fa-mobile fa-color-heading"></i>
+        App Appearance
+      </button>
+        </h5>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+        <div class="card-body">
+
+            <div class="row" id="main">
+
+                <div class="col-md-6 col-lg-6 col-xs-12" id="leftPanel">
+                    <div class="row">
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <form [formGroup]="appSettingForm" (submit)="onSubmit()">
+
+                                <div class="row">
+
+
+
+
+                                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12 col-xl-6">
+                                        <div class="form-group">
+                                            <label>Mobile application color</label>
+                                            <input type="color" formControlName="app_color" id="email" class="form-control input-lg" placeholder="Landmark">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label>Store Menu</label>
+                                            <table class="table table-hover table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Day</th>
+
+                                                        <th>Show / Hide</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr>
+                                                        <td>Reward count</td>
+                                                        <td>
+                                                            <div class="checkbox">
+                                                                <label class="switch" ngbTooltip="{{f.reward_count.value?'Hide':'Show'}}" data-placement="right">
+                                  <input type="checkbox" formControlName="reward_count" class="default">
+                                  <span class="slider round"></span>
+                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Spa menu</td>
+                                                        <td>
+                                                            <div class="checkbox">
+                                                                <label class="switch" ngbTooltip="{{f.spa_menu.value?'Hide':'Show'}}" data-placement="right">
+                                  <input type="checkbox" (change)="checkSpanMenu()" formControlName="spa_menu" class="default">
+                                  <span class="slider round"></span>
+                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Social media</td>
+                                                        <td>
+                                                            <div class="checkbox">
+                                                                <label class="switch" ngbTooltip="{{f.social_media.value?'Hide':'Show'}}" data-placement="right">
+                                  <input type="checkbox" (change)="checkSocialLinks()" formControlName="social_media" class="default">
+                                  <span class="slider round"></span>
+                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>News promotion</td>
+                                                        <td>
+                                                            <div class="checkbox">
+                                                                <label class="switch" ngbTooltip="{{f.news_promotion.value?'Hide':'Show'}}" data-placement="right">
+                                  <input type="checkbox" formControlName="news_promotion" class="default">
+                                  <span class="slider round"></span>
+                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Service rating</td>
+                                                        <td>
+                                                            <div class="checkbox">
+                                                                <label class="switch" ngbTooltip="{{f.service_rating.value?'Hide':'Show'}}" data-placement="right">
+                                  <input type="checkbox" formControlName="service_rating" class="default">
+                                  <span class="slider round"></span>
+                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Schedule appointment</td>
+                                                        <td>
+                                                            <div class="checkbox">
+                                                                <label class="switch" ngbTooltip="{{f.schedule_appointment.value?'Hide':'Show'}}" data-placement="right">
+                                  <input type="checkbox" formControlName="schedule_appointment" class="default">
+                                  <span class="slider round"></span>
+                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-12 col-lg-6 col-xl-3"><button class="btns  btn-1 btn-1b">Save</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-9"></div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Mobile application color preview</label>
+                                <div class="previewImageDiv" [ngStyle]="{'background': f.app_color.value}">
+                                    <img class="color_previewImage" src="assets/img/Home-demo.png" alt="App color preview">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
