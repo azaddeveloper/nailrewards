@@ -4,6 +4,7 @@ import { ApiResponse } from 'src/app/models/api-response.model';
 import { ApiService } from 'src/app/api.service';
 import { NotifierService } from 'angular-notifier';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-add-reward',
@@ -31,13 +32,16 @@ export class AddRewardComponent implements OnInit {
     return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
   }
   ngOnInit() {
+    
+    let endDate= moment(this.min, "DD-MM-YYYY").add(1, 'year');
+    let endDate1 = moment(endDate).format( "dddd 23:59:59 D MMM YYYY"); //=> "Friday 2:00pm 1 Feb 2013"
     this.rewardForm = this.formBuilder.group({
       reward_title: ['', [Validators.required, Validators.maxLength(100)]],
       points_required: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
       reward_description: ['', [Validators.required]],
       term_condition: [''],
       start_date_time: [this.min, [Validators.required]],
-      end_date_time: [this.min, [Validators.required]],
+      end_date_time: [new Date(endDate1), [Validators.required]],
       enabled: [true],
     });
   }
@@ -56,7 +60,8 @@ export class AddRewardComponent implements OnInit {
     body['start_date_time'] = this.getDateString(this.f.start_date_time.value);
     body['end_date_time'] = this.getDateString(this.f.end_date_time.value);
     body['enabled'] = this.f.enabled.value;
-    
+    console.log("body",body)
+    return;
     
     let s1 = this.apiService.addStoreRewards(body).subscribe(
 

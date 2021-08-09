@@ -132,11 +132,18 @@ export class GuestSalonComponent implements OnInit {
   }
 
   onStoreSubmit() {
+    console.log("test",this.custPhonenumber.phone_number)
+    // return;
     this.getCustomerDetails(this.custPhonenumber.phone_number,this.salonDetails.store_code);
   } 
-  numericOnly(event): boolean {    
+  numericOnly(event): boolean {  
+    console.log("event",event) 
+    if(event.keyCode == 13){
+      return true;
+    } 
     let patt = /^([0-9])$/;
     let result = patt.test(event.key);
+    console.log("result",result)
     return result;
   }
   onRewardSubmit(rewardId=0){
@@ -148,7 +155,7 @@ export class GuestSalonComponent implements OnInit {
   rewardNo(){
     this.rewardConfirm=false
     this.returnToDashboard()
-
+ 
   }
   onRewardPINSubmit(){
     // this.customerRewardSuccess=true;

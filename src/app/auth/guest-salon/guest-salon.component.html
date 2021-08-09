@@ -27,7 +27,7 @@
             <div class="container " *ngIf="salon">
                <form name="form" (ngSubmit)="f.form.valid && onStoreSubmit()" #f="ngForm" novalidate>
                     <div class="wrap-input100 validate-input m-b-25" data-validate="Username is required">
-                        <input  placeholder="Enter Customer Phone Number" (keypress)="numericOnly($event)" maxlength="17" type="number" class="input100"
+                        <input  placeholder="Enter Customer Phone Number" (keyup.enter)="onStoreSubmit()" (keypress)="numericOnly($event)" maxlength="17" type="number" class="input100"
                         name="phone_number" [(ngModel)]="custPhonenumber.phone_number" #phone_number="ngModel"
                         [ngClass]="{ 'is-invalid': f.submitted && phone_number.invalid }" required />
                       
@@ -45,8 +45,8 @@
            </div>
             <div *ngIf="!salon" class="container" > 
               <h4 *ngIf="customerDetails.length !=  0" style="font-weight: 700;" class="text-center mt-4">Customer Name : {{customerDetails.customer?.first_name}}
-                {{customerDetails.customer?.last_name}}</h4>
-              <!-- <h4 class="text-center mt-2">Customer Name: {{customerDetails.customer.first_name}} {{customerDetails.customer.last_name}}</h4> -->
+                {{customerDetails.customer?.last_name}}</h4>  
+              <h4 class="text-center mt-2">Total Rewards Points: {{customerDetails.earned_points}} </h4>
               <div *ngIf="addreward" class="">
                 <!-- <form name="form" (ngSubmit)="f.form.valid && onRewardSubmit()" #f="ngForm" novalidate>
                   <div class="card-body" >
